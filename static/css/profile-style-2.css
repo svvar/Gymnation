@@ -1,0 +1,402 @@
+body{
+    display: flex;
+    flex-direction: column;
+    background: #5E3AD4;
+    margin: 0;
+}
+
+.header{
+    background: #5E3AD4;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    height: 8vh;
+    width: 100%;
+}
+
+.header > input, label{
+    display: none;
+}
+
+.header .menu-buttons{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header > .menu-buttons > div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 7vh;
+    margin: 0 5% 0 5%;
+}
+
+.header > .menu-buttons > div > .vh{
+    min-height: 55%;
+    border-left: 3px solid #000000;
+}
+
+.header > .menu-buttons > div > a{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    background: transparent;
+    border: none;
+    margin: 0 3% 0 3%;
+
+    color: #000000;
+    text-decoration: none;
+}
+
+
+.header > .menu-buttons > div > .cart-ico{
+    margin: 0 2% 0 6%;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #000000;
+    border-radius: 50%;
+    width: 1.8em;
+    height: 1.8em;
+    aspect-ratio: 1/1;
+}
+
+.profile{
+    background: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    padding: 4%;
+    height: 70vh;
+}
+
+.profile > .left-block{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+
+    width: 30%;
+    align-items: center;
+}
+
+.profile > .center-block{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+
+    width: 50%;
+    padding: 0 6% 0 2%;
+}
+
+.profile > .right-block{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    width: 25%;
+    height: 75%;
+    background: #656AE2;
+    border-radius: 20px;
+    padding: 1%;
+}
+
+.profile > .left-block > img{
+    height: 50%;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.profile > .left-block > .logout-form > button{
+    background: #D74E4E;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 50px;
+    border: none;
+    border-radius: 10px;
+    align-items: center;
+    width: 100%;
+
+    margin-top: 20%;
+
+    color: #FFFFFF;
+}
+
+.profile > .center-block > .personal{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 15%;
+}
+
+.profile > .center-block > .personal > h1{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 46px;
+    display: flex;
+    align-items: center;
+    margin: 2% 0 0 0;
+}
+
+.profile > .center-block > .personal > h2{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 34px;
+    display: flex;
+    align-items: center;
+    margin: 1% 0 0 0;
+}
+
+.club, .plan{
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+    margin: 0 0 2% 0;
+
+}
+
+.club > h3, .plan > h3{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    width: 35%;
+    margin: 0;
+}
+
+.club > h4{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.plan > h4{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+
+    color: #EA2E2E;
+}
+
+.profile > .right-block > h1{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 45px;
+    text-align: center;
+    margin: 2% 0 3% 0;
+
+    color: #FFFFFF;
+}
+
+.profile > .right-block > h2{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 36px;
+    text-align: center;
+    margin: 1% 0 2% 0;
+
+    color: #FFFFFF;
+}
+
+.profile > .right-block > img{
+    border-radius: 10px;
+    object-fit: cover;
+    height: 55%;
+}
+
+footer{
+    height: 35vh;
+    background-color: #000000;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+footer .logo{
+    /* padding: 5%; */
+    width: 25%;
+    margin-left: 4%;
+}
+
+footer .logo h3{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 123.6%;
+}
+
+
+footer .logo h3 .half1{
+    color: #5E3AD4;
+}
+
+footer .logo h3 .half2{
+    color: #ffffff;
+}
+
+footer .logo h4{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 150.6%;
+    color: #FFFFFF;
+}
+
+footer .tabs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 24%;
+}
+
+footer .tabs h5{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 150.6%;
+
+    flex-grow: 1;
+	width: 50%;
+    text-decoration-line: underline;
+    color: #FFFFFF;
+
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+footer .contacts{
+    display: flex;
+    flex-direction: column;
+
+    width: 24%;
+}
+
+footer .contacts h4{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+    color: #FFFFFF;
+    margin: 0%;
+    margin-bottom: 3%;
+}
+
+
+footer .contacts h5{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+    margin: 1%;
+}
+
+footer > .socials{
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    top: -5%;
+
+    width: 23%;
+}
+
+footer > .socials > h4{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 32px;
+    color: #FFFFFF;
+    margin-bottom: 2%;
+}
+
+footer > .socials > .logos{
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+footer > .socials > .logos > .facebook, .telegram{
+    background: #5e3ad4;
+    border-radius: 50%;
+    border: none;
+    height: 5vh;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    resize: both;
+
+    margin-right: 4%;
+}
+
+footer > .socials > .logos > .twitter, .insta{
+    background: #ffffff;
+    border-radius: 50%;
+    border: none;
+    height: 5vh;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+
+    resize: both;
+
+    margin-right: 4%;
+
+}
+
+footer > .socials > .logos > button > iconify-icon{
+    font-size: 3vh;
+}

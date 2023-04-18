@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work Sans">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+
+        <style media="screen">
+            *,
+            *:before,
+            *:after{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            body{
+                background: rgba(58, 92, 212, 0.5);
+            }
+
+            #login-form{
+                display: block;
+                height: 60vh;
+                width: 50vw;
+                background-color: rgba(255,255,255,0.1);
+                position: absolute;
+                transform: translate(-50%,-50%);
+                top: 50%;
+                left: 50%;
+                border-radius: 10px;
+                backdrop-filter: blur(10px);
+                border: 2px solid rgba(255,255,255,0.1);
+                box-shadow: 0 0 40px rgba(8,7,16,0.6);
+                {#padding: 50px 35px;#}
+            }
+
+            #login-form h3{
+                font-family: 'Poppins',sans-serif;
+                color: #ffffff;
+                letter-spacing: 0.5px;
+                outline: none;
+                border: none;
+
+                font-size: 32px;
+                font-weight: 500;
+                line-height: 42px;
+                text-align: center;
+            }
+
+            .tab{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 4%;
+            }
+
+            .tablinks{
+                width: 100%;
+                background-color: #ffffff;
+                padding: 15px 0;
+                font-size: 18px;
+                font-weight: 600;
+                cursor: pointer;
+                margin-top: 0;
+                border-radius: 0;
+                color: #000000;
+                border: none;
+            }
+
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+              background-color: #ddd;
+            }
+
+            .tab > .tablinks.active {
+              background-color: #ddd;
+            }
+
+            /* The Close Button */
+            .tab > .close {
+              color: #aaaaaa;
+              float: right;
+              font-size: 28px;
+              font-weight: bold;
+            }
+
+            .tab > .close:hover,
+            .tab > .close:focus {
+              color: #000;
+              text-decoration: none;
+              cursor: pointer;
+            }
+
+            /* Style the tab content */
+            .tabcontent {
+                display: none;
+                padding: 6px 12px;
+                border: 1px solid #ccc;
+                border: none;
+
+                height: 80%;
+                overflow-y: auto;
+            }
+
+            /* width */
+            .tabcontent::-webkit-scrollbar{
+                width: 10px;
+                margin: 2%;
+            }
+
+              /* Track */
+            .tabcontent::-webkit-scrollbar-track{
+                background: #D9D9D9;
+                border-radius: 5px;
+            }
+
+              /* Handle */
+            .tabcontent::-webkit-scrollbar-thumb{
+                background: #959595;
+                border-radius: 5px;
+            }
+
+            .tabcontent > label{
+                font-family: 'Poppins',sans-serif;
+                color: #ffffff;
+                letter-spacing: 0.5px;
+                outline: none;
+                border: none;
+
+                display: block;
+                margin-top: 30px;
+                font-size: 16px;
+                font-weight: 500;
+            }
+            .tabcontent > input{
+                font-family: 'Poppins',sans-serif;
+                color: #ffffff;
+                letter-spacing: 0.5px;
+                outline: none;
+                border: none;
+
+                display: block;
+                height: 50px;
+                width: 100%;
+                background-color: rgba(221,221,221,0.4);
+                border-radius: 3px;
+                padding: 0 10px;
+                margin-top: 8px;
+                font-size: 14px;
+                font-weight: 300;
+            }
+            ::placeholder{
+                color: #ffffff;
+            }
+
+            .tabcontent > .error{
+                font-family: 'Poppins',sans-serif;
+                letter-spacing: 0.5px;
+                outline: none;
+                border: none;
+
+                color: red;
+                font-size: 20px;
+                text-align: center;
+                margin-top: 5%;
+            }
+
+            .final-button{
+                margin-top: 50px;
+                width: 100%;
+                background-color: #ffffff;
+                color: #080710;
+                padding: 15px 0;
+                font-size: 18px;
+                font-weight: 600;
+                border-radius: 5px;
+                cursor: pointer;
+                border: none;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div id="login-form">
+            <div class="tab">
+              <button class="tablinks" id="login-button" onclick="openTab(event, 'login')">Вхід</button>
+              <button class="tablinks" id="signup-button" onclick="openTab(event, 'signup')">Реєстрація</button>
+            </div>
+
+
+            <!-- Tab content -->
+            <form id="login" class="tabcontent" method="post">
+                {% csrf_token %}
+                <h3>Вхід</h3>
+
+                <label for="email">Електронна пошта</label>
+                <input type="text" placeholder="Email" id="email" name="email">
+
+                <label for="password">Пароль</label>
+                <input type="password" placeholder="Пароль" id="password" name="password">
+
+                {% if login_error %}
+                <h1 class="error">Неправильна пошта або пароль, перевірте дані</h1>
+                {% endif %}
+
+                <button class="final-button" name="action" value="login">Увійти</button>
+            </form>
+
+            <form id="signup" class="tabcontent" method="post">
+                {% csrf_token %}
+                <h3>Реєстрація</h3>
+
+                <label for="firstname">Ім'я</label>
+                <input type="text" placeholder="Ім'я" id="firstname" name="firstname">
+
+                <label for="lastname">Прізвище</label>
+                <input type="text" placeholder="Прізвище" id="lastname" name="lastname">
+
+                <label for="phone">Телефон</label>
+                <input type="text" placeholder="380ХХХХХХХХХ" id="phone" name="phone">
+
+                <label for="email">Електронна пошта</label>
+                <input type="text" placeholder="Email" id="email" name="email">
+
+                <label for="password">Пароль</label>
+                <input type="password" placeholder="Пароль" id="password" name="password">
+
+                <label for="confirm_password">Повторіть пароль</label>
+                <input type="password" placeholder="Пароль" id="confirm_password" name="confirm_password">
+
+                {% if signup_error %}
+                    {% for e in signup_error %}
+                        <h1 class="error">{{ e }}</h1>
+                    {% endfor %}
+                {% endif %}
+
+                {{ form.errors }}
+                <button class="final-button" name="action" value="signup">Зареєструватися</button>
+            </form>
+        </div>
+
+        <script>
+            document.getElementById("login-button").className += " active";
+            document.getElementById("login").style.display = "block";
+
+
+            function openTab(evt, tabName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(tabName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+        </script>
+
+    </body>
+</html>

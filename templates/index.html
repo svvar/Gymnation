@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work Sans">
+        <link rel="stylesheet" href="{% static 'css/style-1.css' %}" media="screen and (min-width: 1400px)">
+        <link rel="stylesheet" href="{% static 'css/style-2.css' %}" media="screen and (min-width: 1000px) and (max-width: 1400px)">
+        <link rel="stylesheet" href="{% static 'css/style-3.css' %}" media="screen and (min-width: 700px) and (max-width: 1000px)">
+        <link rel="stylesheet" href="{% static 'css/style-4.css' %}" media="screen and (min-width: 300px) and (max-width: 700px)">
+
+        <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+
+    </head>
+
+    <body>
+        <div class="header">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+                <span></span>
+            </label>
+            <div class="menu-buttons">
+                <div>
+                    <div class="vh"></div>
+                    <a href="index.html">Головна</a>
+                    <div class="vh"></div>
+                    <a href="shop.html">Харчування</a>
+                    <div class="vh"></div>
+                    <a href="clubs.html">Клуби</a>
+                    <div class="vh"></div>
+                    <a href="prices.html">Тарифи</a>
+                    <div class="vh"></div>
+                </div>
+                <div>
+                    <div class="vh"></div>
+                    <a href="index.html">Профіль</a>
+                    <div class="vh"></div>
+                    <a class="cart-ico" href="cart.html"><iconify-icon icon="material-symbols:shopping-cart"></iconify-icon></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="top_section">
+            <h1>Станьте кращою версією<br>себе разом із нами</h1>
+            <h2>Спробуйте перший тиждень всього<br>за 1 ₴</h2>
+            <button>Спробувати</button>
+
+        </div>
+
+        <h1>Зміни своє тіло та розум разом із GymNation</h1>
+
+
+        <div class="tiles">
+            <img src="{% static 'images\ad420a_d36342da247848dbbf81c357052c1673f000.jpg' %}">
+            <div class="tile1">
+                <h2>Спільнота</h2>
+                <h3>У нас ви знайдете дружню атмосферу та підтримку, яка допоможе вам зберігати мотивацію та насолоджуватись процесом тренувань.</h3>
+            </div>
+            <div class="tile2">
+                <h2>Комфорт</h2>
+                <h3>Фізична активність - одна із запорук міцного здоров’я, але після тренувань потрібно правильно відновлюватися. У наших клубах до ваших послуг масажний кабінет, басейн та сауна, де ви зможете по справжньому відпочити </h3>
+            </div>
+            <img src="{% static 'images\ad420a_e4a3965bf9f343d5b45283c8b437f049_mv2_d_3346_5019_s_4_2.jpg' %}">
+            <img src="{% static 'images\05.jpg' %}">
+            <div class="tile3">
+                <h2>Результати</h2>
+                <h3>Різноманітність обладнання, та програм тренування, а також наші тренери допоможуть вам якомога швидше досягти бажаних результатів </h3>
+            </div>
+        </div>
+
+        <div class="our_clubs">
+            <h2>НАШІ КЛУБИ</h2>
+            <div class="club_locations">
+                <div class="club1">
+                    <h3>Київ, вул Уявна 12</h3>
+                </div>
+                <div class="club2">
+                    <h3>Київ, вул Нова 26</h3>
+                </div>
+                <div class="club3">
+                    <h3>Київ, вул Довга 102</h3>
+                </div>
+                <div class="club4">
+                    <h3>Київ, вул Чудова 19</h3>
+                </div>
+                <div class="club5">
+                    <h3>Київ, вул Зелена 66</h3>
+                </div>
+                <div class="club6">
+                    <h3>Київ, вул Технологічна 8</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="text_banner">
+            <div class="blur">
+                <h2>Тренажери на будь-який вибір</h2>
+                <h3>Наші клуби обладнані сучасним обладнанням провідних світових виробників, щоб ви мали змогу максимально ефективно, зручно та безпечно тренуватися. Ви обов’язково знайдете саме те що потрібно для виконання вашого тренування</h3>
+            </div>
+        </div>
+
+        <div class="bottom_section">
+            <h2>Готові починати?</h2>
+            <h3>Перегляньте абонементи, виберіть тренера, та створіть профіль, де ви зможете вибрати всі необхідні послуги чи підібрати спортивне харчування. При першому відвідуванні ви отримуєте браслет, що буде слугувати пропуском до наших клубів</h3>
+            <div class="buttons">
+                <button>Створити<br>профіль</button>
+                <button>Переглянути<br>абонементи</button>
+            </div>
+        </div>
+
+        <footer>
+            <div class="logo">
+                <h3><span class="half1">Gym</span><span class="half2">Nation</span></h3>
+                <h4>Вперед до вашої мети <br>разом з GymNation!</h4>
+            </div>
+
+            <div class="tabs">
+                <h5>Головна</h5>
+                <h5>Тарифи</h5>
+                <h5>Харчування</h5>
+                <h5>Профіль</h5>
+                <h5>Клуби</h5>
+                <h5>Кошик</h5>
+            </div>
+
+            <div class="contacts">
+                <h4>Зв'язок з нами</h4>
+                <h5>
+                    <iconify-icon icon="material-symbols:phone-in-talk" style="color: white;" height="3vh"></iconify-icon>
+                    (095)-938-90-99
+                </h5>
+                <h5>
+                    <iconify-icon icon="material-symbols:mail-outline" style="color: white;" height="3vh"></iconify-icon>
+                    aleksseva003@gmail.com
+                </h5>
+            </div>
+
+            <div class="socials">
+                <h4>Соцмережі</h4>
+                <div class="logos">
+                    <button class="facebook">
+                        <iconify-icon icon="ri:facebook-fill" style="color: white;"></iconify-icon>
+                    </button>
+                    <button class="telegram">
+                        <iconify-icon icon="mingcute:telegram-fill" style="color: white;"></iconify-icon>
+                    </button>
+                    <button class="twitter">
+                        <iconify-icon icon="ri:twitter-fill" style="color: #5e3ad4;"></iconify-icon>
+                    </button>
+                    <button class="insta">
+                        <iconify-icon icon="ri:instagram-fill" style="color: #5e3ad4;"></iconify-icon>
+                    </button>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+</html>

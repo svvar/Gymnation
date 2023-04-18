@@ -1,0 +1,483 @@
+body{
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    margin: 0;
+}
+
+.header{
+    background: #5E3AD4;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    height: 8vh;
+    width: 100%;
+}
+
+.header > input, label{
+    display: none;
+}
+
+.header .menu-buttons{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header > .menu-buttons > div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 8vh;
+    margin: 0 5% 0 5%; 
+}
+
+.header > .menu-buttons > div > .vh{
+    min-height: 55%;
+    border-left: 3px solid #000000;
+}
+
+.header > .menu-buttons > div > a{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.563vw;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    background: transparent;
+    border: none;
+    margin: 0 3% 0 3%;
+
+    color: #000000;
+    text-decoration: none;
+}
+
+
+.header > .menu-buttons > div > .cart-ico{
+    margin: 0 2% 0 6%;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #000000;
+    border-radius: 50%;
+    width: 1.8em;
+    height: 1.8em;
+    aspect-ratio: 1/1;
+}
+
+body > h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3% 0 3% 0;
+
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 77px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-indent: 6px;
+
+    color: #5E3AD4;
+
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.selectors{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.selectors > .location{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.selectors > .location  > p{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 34px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #858585;
+}
+
+.selectors > .location > .selector-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.selectors > .location > .selector-container > iconify-icon{
+    font-size: 36px;
+}
+
+.selectors > .location > .selector-container > select{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 43px;
+    display: flex;
+    align-items: start;
+    text-align: start;
+}
+
+.selectors > .period > p{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 34px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    color: #858585;
+}
+
+.selectors > .period > .buttons-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.selectors > .period > .buttons-container > button{
+    background: #FFFFFF;
+    border: 2px solid #3D15C1;
+    border-radius: 120px;
+    width: 15vw;
+    margin: 0 3% 0 3%;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 43px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    color: #3d15c1;
+
+}
+
+.selectors > .period > .buttons-container > button:hover{
+    background: #5e3ad4;
+    border: 2px solid #5E3AD4;
+    color: #ffffff;
+}
+
+.table-container{
+    overflow-x: scroll;
+}
+
+.table-container > table{
+    border-collapse: collapse;
+    margin: 4%;
+    border-spacing: 0;
+    border-collapse: separate;
+    border-radius: 16px;
+    border: 1px solid #B9B9B9;
+}
+   
+/*Apply a border to the right of all but the last column */
+.table-container > table th:not(:last-child),
+.table-container > table td:not(:last-child) {
+    border-right: 1px solid #B9B9B9;
+}
+   
+   /* Apply a border to the bottom of all but the last row */
+.table-container >table>thead>tr:not(:last-child)>th,
+.table-container >table>tbody>tr:not(:last-child)>td,
+.table-container >table>tfoot>tr:not(:last-child)>td{
+    border-bottom: 1px solid #B9B9B9;
+}
+
+/* top-left border-radius */
+.table-container >table tr:first-child th:first-child {
+    border-top-left-radius: 15px;
+}
+  
+  /* top-right border-radius */
+.table-container >table tr:first-child th:last-child {
+    border-top-right-radius: 15px;
+}
+  
+  /* bottom-left border-radius */
+.table-container >table tr:last-child td:first-child {
+    border-bottom-left-radius: 15px;
+}
+  
+  /* bottom-right border-radius */
+.table-container >table tr:last-child td:last-child {
+    border-bottom-right-radius: 15px;
+}
+
+th{
+    background: #5A36D1;
+    width: 20%;
+    height: 20vh;
+}
+
+th > h3{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 130%;
+    /* or 62px */
+
+    text-align: center;
+
+    color: #EF4A4A;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 40%;
+    margin: 3% 0 3% 0;
+
+}
+
+th > h4{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 130%;
+    margin: 0 0 7% 0;
+    /* or 47px */
+
+
+    color: #FFFFFF;
+}
+
+th > button{
+    background: #F3EE78;
+    border-radius: 15px;
+    border: none;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    width: 50%;
+
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 130%;
+    /* or 42px */
+
+    margin: 0 0 7% 0;
+}
+
+table iconify-icon{
+    color: #FF4747;
+    margin-top: 3%;
+}
+
+table td{
+    height: 10vh;
+    text-align: center; 
+    vertical-align: middle;
+    font-size: 40px;
+    padding: 1%;   
+}
+
+table td:nth-child(1){
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 130%;
+    color: #000000;
+
+    text-align: start;
+}
+
+
+footer{
+    height: 40vh;
+    background-color: #000000;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+footer .logo{
+    /* padding: 5%; */
+    width: 25%;
+    margin-left: 4%;
+}
+
+footer .logo h3{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 123.6%;
+}
+
+
+footer .logo h3 .half1{
+    color: #5E3AD4;
+}
+
+footer .logo h3 .half2{
+    color: #ffffff;
+}
+
+footer .logo h4{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 150.6%;
+    color: #FFFFFF;
+}
+
+footer .tabs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 25%;
+}
+
+footer .tabs h5{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 150.6%;
+
+    flex-grow: 1;
+	width: 50%;   
+    text-decoration-line: underline;
+    color: #FFFFFF;
+
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+footer .contacts{
+    display: flex;
+    flex-direction: column;
+
+    width: 20%;
+}
+
+footer .contacts h4{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+    color: #FFFFFF;
+    margin: 0%;
+    margin-bottom: 3%;
+}
+
+
+footer .contacts h5{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    display: flex;
+    align-items: center;  
+
+    color: #FFFFFF;
+    margin: 1%;
+}
+
+footer > .socials{
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    top: -5%;
+
+    width: 25%;
+}
+
+footer > .socials > h4{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+    color: #FFFFFF;
+    margin-bottom: 2%;
+}
+
+footer > .socials > .logos{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+
+footer > .socials > .logos > .facebook, .telegram{
+    background: #5e3ad4;
+    border-radius: 50%;
+    border: none;
+    height: 8vh;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    resize: both;
+
+    margin-right: 4%;
+}
+
+footer > .socials > .logos > .twitter, .insta{
+    background: #ffffff;
+    border-radius: 50%;
+    border: none;
+    height: 8vh;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+
+    resize: both;
+
+    margin-right: 4%;
+
+}
+
+
+footer > .socials > .logos > button > iconify-icon{
+    font-size: 4vh;
+}
+

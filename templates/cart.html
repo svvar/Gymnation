@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <html>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work Sans"> 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"> 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">          
+        <link rel="stylesheet" href="{% static 'css/cart-style-1.css' %}" media="screen and (min-width: 1400px)">
+        <link rel="stylesheet" href="{% static 'css/cart-style-2.css' %}" media="screen and (min-width: 1000px) and (max-width: 1400px)">
+        <link rel="stylesheet" href="{% static 'css/cart-style-3.css' %}" media="screen and (min-width: 700px) and (max-width: 1000px)">
+        <link rel="stylesheet" href="{% static 'css/cart-style-4.css' %}" media="screen and (min-width: 300px) and (max-width: 700px)">
+
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+    </html>
+    <body>
+        <div class="header">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+                <span></span>
+            </label>
+            <div class="menu-buttons">
+                <div>
+
+                    <div class="vh"></div>
+                    <a href="index.html">Головна</a>
+                    <div class="vh"></div>
+                    <a href="shop.html">Харчування</a>
+                    <div class="vh"></div>
+                    <a href="clubs.html">Клуби</a>
+                    <div class="vh"></div>
+                    <a href="prices.html">Тарифи</a>
+                    <div class="vh"></div>
+                </div>
+                <div>
+                    <div class="vh"></div>
+                    <a href="index.html">Профіль</a>
+                    <div class="vh"></div>
+                    <a class="cart-ico" href="cart.html"><iconify-icon icon="material-symbols:shopping-cart"></iconify-icon></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="item-list">
+                <h2>Ваш кошик</h2>
+                <h3>В кошику 3 позиції</h3>
+                <div class="item" id="i1">
+                    <img src="{% static 'images/207498326.jpg' %}">
+                    <div class="desc">
+                        <h4>BioTech USA 100% Pure Whey</h4>
+                        <h5>Банан 2270г</h5>
+                    </div>
+                    <h3 class="amount">1</h3>
+                    <div class="amount-buttons">
+                        <button><iconify-icon icon="mdi:triangle"></iconify-icon></button>
+                        <button><iconify-icon icon="mdi:triangle-down"></iconify-icon></button>                        
+                    </div>
+                    <h3 class="price">$ 681</h3>
+                    <button class="trash"><iconify-icon icon="fa6-regular:trash-can"></iconify-icon></button>
+                </div>
+                <div class="item" id="i2">
+                    <img src="{% static 'images/207498326.jpg' %}">
+                    <div class="desc">
+                        <h4>BioTech USA 100% Pure Whey</h4>
+                        <h5>Банан 2270г</h5>
+                    </div>
+                    <h3 class="amount">1</h3>
+                    <div class="amount-buttons">
+                        <button><iconify-icon icon="mdi:triangle"></iconify-icon></button>
+                        <button><iconify-icon icon="mdi:triangle-down"></iconify-icon></button>                      
+                    </div>
+                    <h3 class="price">$ 681</h3>
+                    <button class="trash"><iconify-icon icon="fa6-regular:trash-can"></iconify-icon></button>
+                </div>
+                <div class="item" id="i3">
+                    <img src="{% static 'images/207498326.jpg' %}">
+                    <div class="desc">
+                        <h4>BioTech USA 100% Pure Whey</h4>
+                        <h5>Банан 2270г</h5>
+                    </div>
+                    <h3 class="amount">1</h3>
+                    <div class="amount-buttons">
+                        <button><iconify-icon icon="mdi:triangle"></iconify-icon></button>
+                        <button><iconify-icon icon="mdi:triangle-down"></iconify-icon></button>                      
+                    </div>
+                    <h3 class="price">$ 681</h3>
+                    <button class="trash"><iconify-icon icon="fa6-regular:trash-can"></iconify-icon></button>
+                </div>
+            </div>
+
+            <div class="payment">
+                <div class="user">
+                    <h2 class="name">Климюк Данило-Олександр</h2>
+                    <div class="photo">
+                        <img src="{% static 'images\bannon-morrissy-RxiAV5LC-ww-unsplash.jpg' %}">
+                    </div>
+                    <!-- <img class="photo" src="images\bannon-morrissy-RxiAV5LC-ww-unsplash.jpg"> -->
+                </div>
+                <div class="payment-method">
+                    <h2>Виберіть спосіб оплати</h2>
+                    <div>
+                        <input type="radio" id="cash"/>
+                        <label for="cash">Готівкою при отриманні</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="saved"/>
+                        <label for="saved"><iconify-icon icon="icon-park-solid:bank-card"></iconify-icon>&nbsp;*166</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="card"/>
+                        <label for="card">Додати картку</label>
+                    </div>
+                </div>
+                <hr>
+                <div class="card-info">
+                    <div class="number">
+                        <p>Номер картки</p>
+                        <input type="text" id="number"  minlength="16" maxlength="16" size="10">
+                    </div>
+                    <div class="expire">
+                        <p>Термін дії</p>
+                        <input type="text" id="expire" minlength="16" maxlength="16" size="10">
+                    </div>
+                    <div class="cvv">
+                        <p>CVV</p>
+                        <!-- <label for="cvv" aria-placeholder="111">CVV</label> -->
+                        <input type="text" id="cvv" minlength="16" maxlength="16" size="10">
+                    </div>
+                </div>
+                <hr>
+                <div class="total">
+                    <h3>Всього до сплати</h3>
+                    <h3>9999 грн</h3>
+                </div>
+                <button>
+                    <h3>9999 грн</h3>
+                    <h3>Сплатити<iconify-icon icon="material-symbols:arrow-right-alt"></iconify-icon></h3>
+                </button>
+            </div>
+        </div>
+
+        <footer>
+            <div class="logo">
+                <h3><span class="half1">Gym</span><span class="half2">Nation</span></h3>
+                <h4>Вперед до вашої мети <br>разом з GymNation!</h4>
+            </div>
+
+            <div class="tabs">
+                <h5>Головна</h5>
+                <h5>Тарифи</h5>
+                <h5>Харчування</h5>
+                <h5>Профіль</h5>
+                <h5>Клуби</h5>
+                <h5>Кошик</h5>
+            </div>
+
+            <div class="contacts">
+                <h4>Зв'язок з нами</h4>
+                <h5>
+                    <iconify-icon icon="material-symbols:phone-in-talk" style="color: white;" height="3vh"></iconify-icon>
+                    (095)-938-90-99
+                </h5>
+                <h5>
+                    <iconify-icon icon="material-symbols:mail-outline" style="color: white;" height="3vh"></iconify-icon>
+                    aleksseva003@gmail.com
+                </h5>
+            </div>
+
+            <div class="socials">
+                <h4>Соцмережі</h4>
+                <div class="logos">
+                    <button class="facebook">
+                        <iconify-icon icon="ri:facebook-fill" style="color: white;"></iconify-icon>                  
+                    </button>
+                    <button class="telegram">
+                        <iconify-icon icon="mingcute:telegram-fill" style="color: white;"></iconify-icon>       
+                    </button>
+                    <button class="twitter">
+                        <iconify-icon icon="ri:twitter-fill" style="color: #5e3ad4;"></iconify-icon>                 
+                    </button>
+                    <button class="insta">
+                        <iconify-icon icon="ri:instagram-fill" style="color: #5e3ad4;"></iconify-icon>                  
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

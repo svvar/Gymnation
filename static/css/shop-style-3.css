@@ -1,0 +1,606 @@
+body{
+    display: flex;
+    flex-direction: column;
+    background: #5E3AD4;
+    margin: 0;
+}
+
+.header{
+    background: #5E3AD4;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    height: 7vh;  
+    width: 100%;
+}
+
+.header > input, label{
+    display: none;
+}
+
+.header .menu-buttons{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header > .menu-buttons > div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 7vh;
+    margin: 0 5% 0 5%; 
+}
+
+.header > .menu-buttons > div > .vh{
+    min-height: 55%;
+    border-left: 3px solid #000000;
+}
+
+.header > .menu-buttons > div > a{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    background: transparent;
+    border: none;
+    margin: 0 3% 0 3%;
+
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+
+
+.header > .menu-buttons > div > .cart-ico{
+    margin: 0 2% 0 6%;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #000000;
+    border-radius: 50%;
+    width: 1.8em;
+    height: 1.8em;
+    aspect-ratio: 1/1;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0%;
+    top: 0%;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.top_section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    /* padding-right: 40%;      
+    padding-top: 7%; */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #FFFFFF 100%), url(../images/best-supplements-for-muscle-growth.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 50vh;
+    height: 60vh;
+}
+
+.top_section > h2{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 52px;
+    text-align: center;
+
+    color: #FFFFFF;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 0;
+}
+
+.top_section > h3{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 35px;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 10%;
+    margin-top: 5%;
+}
+
+.categories{
+    background-color: #FFFFFF;
+    height: 15vh;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.categories button{
+    background: #D9D9D9;
+    border-radius: 30px;
+    border: 4px solid #D9D9D9;
+
+}
+
+.categories button:hover{
+    background: #5e3ad4;
+    border: 4px solid #5E3AD4;
+    color: #ffffff;
+}
+
+.categories > button.active{
+    background: #5e3ad4;
+    border: 4px solid #5E3AD4;
+}
+
+.categories > button > a{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+
+    color: #000000;
+}
+
+.categories >button.active > a{
+    color: #ffffff;
+}
+
+.main-area{
+    display: flex;
+    flex-direction: row;
+}
+
+.main-area .side-menu{
+    width: 30%;
+    background-color: #FFFFFF;
+    /*min-height: 130vh;*/
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  
+}
+
+.main-area > .side-menu > h3{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 35px;
+    text-align: center;
+
+    margin: 2% 0 2% 0;
+}
+
+.main-area > .side-menu > form{
+    padding: 3%;
+    margin-bottom: 5%;
+}
+
+.main-area .side-menu .type, .manufact, .taste{
+    margin: 2% 2% 10% 2%;
+    padding: 2%;
+
+    height: 10%;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: justify;
+}
+
+.main-area .side-menu .taste{
+    height: 20%;
+}
+
+.main-area > .side-menu label{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #000000;
+}
+
+.main-area > .side-menu input{
+    width: 24px;
+    height: 24px;
+}
+
+.main-area > .side-menu > #apply-filters{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 30px;
+    text-align: center;
+    color: #ffffff;
+
+    margin: 0 5% 5% 5%;
+
+    background-color: #5e3ad4;
+    border-radius: 20px;
+    border: none;
+}
+
+/* width */
+.type::-webkit-scrollbar, .manufact::-webkit-scrollbar, .taste::-webkit-scrollbar {
+    width: 8px;
+    margin: 2%;
+}
+  
+  /* Track */
+.type::-webkit-scrollbar-track, .manufact::-webkit-scrollbar-track, .taste::-webkit-scrollbar-track {
+    background: #D9D9D9;
+    border-radius: 5px;
+}
+  
+  /* Handle */
+.type::-webkit-scrollbar-thumb, .manufact::-webkit-scrollbar-thumb, .taste::-webkit-scrollbar-thumb {
+    background: #959595;
+    border-radius: 5px;
+}
+
+
+
+.main-area > .goods{
+    width: 70%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-between;
+    align-items: center;
+    padding: 2% 1% 2% 1%;
+}
+
+.main-area > .goods > div{
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    height: 36vh;
+    width: 95%;
+
+    margin-bottom: 3%;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.main-area > .goods > div > img{
+    width: 30%;
+    object-fit: contain;
+    margin: 3%;
+}
+
+.main-area > .goods > div > .card-info{
+    width: 65%;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.main-area > .goods > .page-number{
+    background-color: #5e3ad4;
+    height: 5vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+}
+
+.main-area > .goods > .page-number > button{
+    border: none;
+    background: transparent;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 40px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.main-area > .goods > .page-number > button > a{
+    border: none;
+    background: transparent;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 40px;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.main-area > .goods > .page-number > .active{
+    text-decoration: underline;
+}
+
+.main-area > .goods > .page-number > .disabled{
+    display: none;
+}
+
+#p1{
+    text-decoration-line: underline;
+}
+
+.card-info > h3{
+    height: 30%;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 35px;
+    color: #3A5CD4;
+    margin: 0 0 11% 0;
+
+}
+
+.card-info > p{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 36px;
+    margin: 0 0 12% 0;
+}
+
+.card-info > .taste-selector{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px dashed #CCCCCC;
+
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 5%;
+}
+
+
+.card-info > .pricecart{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-info > .pricecart > h4{
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+
+}
+
+.card-info > .pricecart > button{
+    background: #6AB856;
+    border-radius: 25px;
+    width: 38%;
+    height: 90%;
+    border: none;
+
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 25px;    
+}
+
+.card-info > .pricecart > button{
+    background: #6AB856;
+    border-radius: 25px;
+    width: 38%;
+    height: 90%;
+    border: none;
+
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 25px;
+}
+
+.main-area > .goods > .page-number > .disabled{
+    display: none;
+}
+
+
+footer{
+    background-color: #000000;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: start;
+}
+
+footer .logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .logo h3{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 40px;
+    margin: 5% 0 2% 0;
+}
+
+
+footer .logo h3 .half1{
+    color: #5E3AD4;
+}
+
+footer .logo h3 .half2{
+    color: #ffffff;
+}
+
+footer .logo h4{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 150.6%;
+    color: #FFFFFF;
+    margin: 0 0 2% 0;
+}
+
+footer .logo h4 br{
+    display: none;
+}
+
+footer .tabs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 6%;
+
+}
+
+footer .tabs h5{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 150.6%;
+  
+    text-decoration-line: underline;
+    color: #FFFFFF;
+
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+footer .contacts{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    width: 100%;
+    margin: 0 0 4% 0;
+
+}
+
+footer .contacts h4{
+    display: none;
+}
+
+
+footer .contacts h5{
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;  
+
+    color: #FFFFFF;
+    margin: 1%;
+}
+
+footer > .socials{
+    display: flex;
+    flex-direction: column;
+}
+
+footer > .socials > h4{
+    display: none;
+}
+
+footer > .socials > .logos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15%;
+    margin-bottom: 10%;
+    
+}
+
+
+footer > .socials > .logos > .facebook, .telegram{
+    background: #5e3ad4;
+    border-radius: 50%;
+    border: none;
+    height: 5vh;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    resize: both;
+
+    /* margin-right: 4%; */
+}
+
+footer > .socials > .logos > .twitter, .insta{
+    background: #ffffff;
+    border-radius: 50%;
+    border: none;
+    height: 5vh;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+
+    resize: both;
+
+    /* margin-right: 4%; */
+
+}
+
+footer > .socials > .logos > button > iconify-icon{
+    font-size: 3vh;
+}

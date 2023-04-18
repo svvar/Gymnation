@@ -1,0 +1,306 @@
+{% load static %}
+{% load filters %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work Sans">        
+        <link rel="stylesheet" href="{% static 'css/shop-style-1.css' %}" media="screen and (min-width: 1400px)">
+        <link rel="stylesheet" href="{% static 'css/shop-style-2.css' %}" media="screen and (min-width: 1000px) and (max-width: 1400px)">
+        <link rel="stylesheet" href="{% static 'css/shop-style-3.css' %}" media="screen and (min-width: 700px) and (max-width: 1000px)">
+        <link rel="stylesheet" href="{% static 'css/shop-style-4.css' %}" media="screen and (min-width: 300px) and (max-width: 700px)">
+
+        <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+                <span></span>
+            </label>
+            <div class="menu-buttons">
+                <div>
+                    <div class="vh"></div>
+                    <a href="index.html">Головна</a>
+                    <div class="vh"></div>
+                    <a href="shop.html">Харчування</a>
+                    <div class="vh"></div>
+                    <a href="clubs.html">Клуби</a>
+                    <div class="vh"></div>
+                    <a href="prices.html">Тарифи</a>
+                    <div class="vh"></div>
+                </div>
+                <div>
+                    <div class="vh"></div>
+{#                    <button id="profile-button">Профіль</button>#}
+                    {% if user.is_authenticated %}
+                        <a id="profile-button" href="profile.html">Профіль</a>
+                    {% else %}
+                        <a id="no-auth" href="login-dialog.html">Увійти</a>
+                    {% endif %}
+                    <div class="vh"></div>
+                    <a class="cart-ico" href="cart.html"><iconify-icon icon="material-symbols:shopping-cart"></iconify-icon></a>
+                </div>
+            </div>
+{#            <div id="modal-login" class="modal">#}
+{#                {% include 'login-dialog.html' %}#}
+{#            </div>#}
+{#            <script>#}
+{#                // Get the modal#}
+{#                var modal = document.getElementById("modal-login");#}
+{#                console.log(modal)#}
+{##}
+{#                // Get the button that opens the modal#}
+{#                var btn = document.getElementById("no-auth");#}
+{#                console.log(btn)#}
+{##}
+{#                // Get the <span> element that closes the modal#}
+{#                var span = document.getElementsByClassName("close")[0];#}
+{##}
+{#                // When the user clicks on the button, open the modal#}
+{#                btn.onclick = function() {#}
+{#                  modal.style.display = "block";#}
+{#                }#}
+{##}
+{#                // When the user clicks on <span> (x), close the modal#}
+{#                span.onclick = function() {#}
+{#                  modal.style.display = "none";#}
+{#                }#}
+{##}
+{#                // When the user clicks anywhere outside of the modal, close it#}
+{#                window.onclick = function(event) {#}
+{#                  if (event.target == modal) {#}
+{#                    modal.style.display = "none";#}
+{#                  }#}
+{#                }#}
+{#            </script>#}
+        </div>
+
+
+        <div class="top_section">
+            <h2>Корисне харчування для ефективних тренувань</h2>
+            <h3>Хочете покращити та пришвидшити ваші результати - ми вам допоможемо!В нашому асортименті наявні усі найпопулярніші добавки, не потрібно нікуди додатково ходити, отримуйте ваше замовлення прямо в залі, коли прийдете на тренування</h3>
+        </div>
+        <div class="categories">
+            <button class="category-button{% if selected_category == 'protein' %} active{% endif %}"><a href="{% url 'shop' %}?category=protein">Протеїни</a></button>
+            <button class="category-button{% if selected_category == 'amino' %} active{% endif %}"><a href="{% url 'shop' %}?category=amino">Амінокислоти</a></button>
+            <button class="category-button{% if selected_category == 'gainers' %} active{% endif %}"><a href="{% url 'shop' %}?category=gainers">Гейнери</a></button>
+            <button class="category-button{% if selected_category == 'creatine' %} active{% endif %}"><a href="{% url 'shop' %}?category=creatine">Креатин</a></button>
+            <button class="category-button{% if selected_category == 'vitamins' %} active{% endif %}"><a href="{% url 'shop' %}?category=vitamins">Вітаміни</a></button>
+            <button class="category-button{% if selected_category == 'fat_burners' %} active{% endif %}"><a href="{% url 'shop' %}?category=fat_burners">Жироспалювачі</a></button>
+            <button class="category-button{% if selected_category == 'energy' %} active{% endif %}"><a href="{% url 'shop' %}?category=energy">Енергетики</a></button>
+
+
+            <script>
+                // get all category buttons
+                const categoryButtons = document.querySelectorAll('.category-button');
+
+                // add event listener to each button
+                categoryButtons.forEach(button => {
+                  button.addEventListener('click', () => {
+                    // remove active class from all buttons
+                    categoryButtons.forEach(button => {
+                      button.classList.remove('active');
+                    });
+                    // add active class to clicked button
+                    button.classList.add('active');
+                  });
+                });
+            </script>
+        </div>
+
+        <div class="main-area">
+            <div class="side-menu">
+                <h3>Тип</h3>
+                <form method="get" class="p_type-filter">
+                    {% for t in p_types %}
+                        <label>{{ t }}<input type="checkbox" name="type" value="{{ t }}"></label>
+                    {% endfor %}
+                </form>
+                <h3>Виробник</h3>
+                <form method="get" class="manufacturer-filter">
+                    {% for m in manufacturers %}
+                        <label>{{ m }}<input type="checkbox" name="manufacturer" value="{{ m }}"></label>
+                    {% endfor %}
+                </form>
+                <h3>Смак</h3>
+                <form method="get" class="taste-filter">
+                    {% for t in tastes %}
+                        <label>{{ tastes|get_item:t }}<input type="checkbox" name="taste" value="{{ t }}"></label>
+                    {% endfor %}
+                </form>
+                <button id="apply-filters">Застосувати фільтри</button>
+
+                <!-- JavaScript code for handling checkbox changes -->
+                <script>
+                    // Get all the checkboxes
+                    const checkboxes = document.querySelectorAll('input[type=checkbox]');
+
+                    // add change event listeners to the checkboxes
+                    checkboxes.forEach((checkbox) => {
+                      checkbox.addEventListener('change', () => {
+                        // save the state of the checkbox to localStorage
+                        localStorage.setItem(checkbox.value, checkbox.checked);
+                      });
+
+                      // set the initial state of the checkbox based on localStorage
+                      const savedState = localStorage.getItem(checkbox.value);
+                      if (savedState !== null) {
+                        checkbox.checked = savedState === 'true';
+                      }
+
+                      // Add event listeners to each checkbox
+                      checkbox.addEventListener('change', updateFilters);
+                    });
+
+                    // Function to update the filters based on the selected checkboxes
+                    function updateFilters() {
+                      // Get the selected filter values
+                      const selectedManufacturers = getSelectedValues('manufacturer');
+                      const selectedTastes = getSelectedValues('taste');
+                      const selectedTypes = getSelectedValues('type');
+
+                      // Build the URL with the selected filter values
+                      const url = buildURL(selectedManufacturers, selectedTastes, selectedTypes);
+
+                      // Update the URL with the selected filter values
+                      history.pushState(null, null, url);
+                    }
+
+                    // Function to get the selected values for a given filter name
+                    function getSelectedValues(filterName) {
+                      const selectedCheckboxes = document.querySelectorAll(`input[name=${filterName}]:checked`);
+                      return Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+                    }
+
+                    // Function to build the URL with the selected filter values
+                    function buildURL(manufacturers, tastes, types) {
+                      const url = new URL(window.location.href);
+                      url.searchParams.set('manufacturer', manufacturers.join(','));
+                      url.searchParams.set('taste', tastes.join(','));
+                      url.searchParams.set('type', types.join(','));
+                      return url.toString();
+                    }
+
+                    // get the button element
+                    const button = document.querySelector('#apply-filters');
+
+                    // add click event listener to the button
+                    button.addEventListener('click', () => {
+                      // reload the page
+                      window.location.reload();
+                    });
+                </script>
+            </div>
+
+            <div class="goods">
+                {% for p in products %}
+                <div>
+                    <img src="{{ p.picture }}">
+                    <div class="card-info">
+                        <h3>{{ p.name}}</h3>
+                        <p>{{ p.weight }} г</p>
+                        <select class="taste-selector">
+                            {% for taste in p.tastes %}
+                            <option value="vanilla">{{ p.tastes|get_item:taste }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="pricecart">
+                            <h4>{{ p.price }} грн</h4>
+                            <button>В кошик</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="page-number">
+                    {% if products.has_other_pages %}
+                        {% if products.has_previous %}
+                          <button><a href="{{ params }}page={{ products.previous_page_number }}">&laquo;</a></button>
+                        {% else %}
+                          <button class="disabled"><span>&laquo;</span></button>
+                        {% endif %}
+
+                        {% for i in products.paginator.page_range %}
+                          {% if products.number == i %}
+                            <button class="active"><span>{{ i }} <span class="sr-only"></span></span></button>
+                          {% else %}
+                            <button><a href="{{ params }}page={{ i }}">{{ i }}</a></button>
+                          {% endif %}
+                        {% endfor %}
+
+                        {% if products.has_next %}
+                          <button><a href="{{ params }}page={{ products.next_page_number }}">&raquo;</a></button>
+                        {% else %}
+                          <button class="disabled"><span>&raquo;</span></button>
+                        {% endif %}
+                    {% endif %}
+                </div>
+
+
+{#                <div class="page-number">#}
+{#                    <button id="p1">1</button>#}
+{#                    <button id="p2">2</button>#}
+{#                    <button id="p3">3</button>#}
+{#                    <button id="p4">4</button>#}
+{#                    <button id="p5">5</button>#}
+{#                    <button id="p6">6</button>#}
+{#                    <button id="p7">7</button>#}
+{#                    <button id="p8">8</button>#}
+{#                </div>#}
+            </div>
+        </div>
+
+        <footer>
+            <div class="logo">
+                <h3><span class="half1">Gym</span><span class="half2">Nation</span></h3>
+                <h4>Вперед до вашої мети <br>разом з GymNation!</h4>
+            </div>
+
+            <div class="tabs">
+                <h5>Головна</h5>
+                <h5>Тарифи</h5>
+                <h5>Харчування</h5>
+                <h5>Профіль</h5>
+                <h5>Клуби</h5>
+                <h5>Кошик</h5>
+            </div>
+
+            <div class="contacts">
+                <h4>Зв'язок з нами</h4>
+                <h5>
+                    <iconify-icon icon="material-symbols:phone-in-talk" style="color: white;" height="3vh"></iconify-icon>
+                    (095)-938-90-99
+                </h5>
+                <h5>
+                    <iconify-icon icon="material-symbols:mail-outline" style="color: white;" height="3vh"></iconify-icon>
+                    aleksseva003@gmail.com
+                </h5>
+            </div>
+
+            <div class="socials">
+                <h4>Соцмережі</h4>
+                <div class="logos">
+                    <button class="facebook">
+                        <iconify-icon icon="ri:facebook-fill" style="color: white;"></iconify-icon>                  
+                    </button>
+                    <button class="telegram">
+                        <iconify-icon icon="mingcute:telegram-fill" style="color: white;"></iconify-icon>       
+                    </button>
+                    <button class="twitter">
+                        <iconify-icon icon="ri:twitter-fill" style="color: #5e3ad4;"></iconify-icon>                 
+                    </button>
+                    <button class="insta">
+                        <iconify-icon icon="ri:instagram-fill" style="color: #5e3ad4;"></iconify-icon>                  
+                    </button>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+</html>

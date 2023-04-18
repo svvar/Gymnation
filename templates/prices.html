@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work Sans">        
+        <link rel="stylesheet" href="{% static 'css/prices-style-1.css' %}" media="screen and (min-width: 1400px)">
+        <link rel="stylesheet" href="{% static 'css/prices-style-2.css' %}" media="screen and (min-width: 1000px) and (max-width: 1400px)">
+        <link rel="stylesheet" href="{% static 'css/prices-style-3.css' %}" media="screen and (min-width: 700px) and (max-width: 1000px)">
+        <link rel="stylesheet" href="{% static 'css/prices-style-4.css' %}" media="screen and (min-width: 300px) and (max-width: 700px)">
+
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+                <span></span>
+            </label>
+            <div class="menu-buttons">
+                <div>
+                    <div class="vh"></div>
+                    <a href="index.html">Головна</a>
+                    <div class="vh"></div>
+                    <a href="shop.html">Харчування</a>
+                    <div class="vh"></div>
+                    <a href="clubs.html">Клуби</a>
+                    <div class="vh"></div>
+                    <a href="prices.html">Тарифи</a>
+                    <div class="vh"></div>
+                </div>
+                <div>
+                    <div class="vh"></div>
+                    <a href="index.html">Профіль</a>
+                    <div class="vh"></div>
+                    <a class="cart-ico" href="cart.html"><iconify-icon icon="material-symbols:shopping-cart"></iconify-icon></a>
+                </div>
+            </div>
+        </div>
+
+        <h3>Тарифні плани</h3>
+        <div class="selectors">
+            <div class="location">
+                <p>Розташування</p>
+                <div class="selector-container">
+                    <iconify-icon icon="material-symbols:location-on-outline-rounded"></iconify-icon>
+                    <select>
+                        <option value="club1">Київ, вул Уявна 12</option>
+                        <option value="club2">Київ, вул Нова 26</option>
+                        <option value="club3">Київ, вул Довга 102</option>
+                        <option value="club4">Київ, вул Чудова 109</option>
+                        <option value="club5">Київ, вул Зелена 66</option>
+                        <option value="club6">Київ, вул Технологічна 8</option>
+                    </select>
+                </div>
+            </div>
+            <div class="period">
+                <p>Тривалість</p>
+                <div class="buttons-container">
+                    <button onclick="changeState(this)">1 місяць</button>
+                    <button onclick="changeState(this)">3 місяці</button>
+                    <button onclick="changeState(this)">1 рік</button>
+                </div>
+
+                <script>
+                    function changeState(_this) {
+                        if (_this.style.background == 'rgb(94, 58, 212)'){
+                            _this.style.background = "rgb(255, 255, 255)"
+                            _this.style.border = "2px solid rgb(61, 21, 193)";
+                            _this.style.color = "rgb(61, 21, 193)"
+                        }
+                        else{
+                            _this.style.background = "rgb(94, 58, 212)";
+                            _this.style.border = "2px solid rgb(94, 58, 212)";
+                            _this.style.color = "rgb(255, 255, 255)"
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th></th> <th><h3>STARTER</h3><h4>000грн</h4><button>Обрати</button></th> <th><h3>STANDARD</h3><h4>000грн</h4><button>Обрати</button></th> <th><h3>PREMIUM</h3><h4>000грн</h4><button>Обрати</button></th> <th><h3>PREMIUM SPA</h3><h4>000грн</h4><button>Обрати</button></th>
+                </tr>
+                <tr>
+                    <td>Доступ до тренажерної зали</td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td>
+                </tr>
+                <tr>
+                    <td>Перше тренування з тренером</td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td>
+                </tr>
+                <tr>
+                    <td>Роздягальня</td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td>
+                </tr>
+                <tr>
+                    <td>Сейф</td> <td></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td>
+                </tr>
+                <tr>
+                    <td>Басейн</td> <td></td> <td></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td>
+                </tr>
+                <tr>
+                    <td>Масажний кабінет</td> <td></td> <td></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td>
+                </tr>
+                <tr>
+                    <td>Сауна</td> <td></td> <td></td> <td></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td>
+                </tr>
+                <tr>
+                    <td>Рушники та халати</td> <td></td> <td></td> <td></td> <td><iconify-icon icon="mdi:tick-circle"></iconify-icon></td>
+                </tr>
+            </table>
+        </div>
+
+        <footer>
+            <div class="logo">
+                <h3><span class="half1">Gym</span><span class="half2">Nation</span></h3>
+                <h4>Вперед до вашої мети <br>разом з GymNation!</h4>
+            </div>
+
+            <div class="tabs">
+                <h5>Головна</h5>
+                <h5>Тарифи</h5>
+                <h5>Харчування</h5>
+                <h5>Профіль</h5>
+                <h5>Клуби</h5>
+                <h5>Кошик</h5>
+            </div>
+
+            <div class="contacts">
+                <h4>Зв'язок з нами</h4>
+                <h5>
+                    <iconify-icon icon="material-symbols:phone-in-talk" style="color: white;" height="3vh"></iconify-icon>
+                    (095)-938-90-99
+                </h5>
+                <h5>
+                    <iconify-icon icon="material-symbols:mail-outline" style="color: white;" height="3vh"></iconify-icon>
+                    aleksseva003@gmail.com
+                </h5>
+            </div>
+
+            <div class="socials">
+                <h4>Соцмережі</h4>
+                <div class="logos">
+                    <button class="facebook">
+                        <iconify-icon icon="ri:facebook-fill" style="color: white;"></iconify-icon>                  
+                    </button>
+                    <button class="telegram">
+                        <iconify-icon icon="mingcute:telegram-fill" style="color: white;"></iconify-icon>       
+                    </button>
+                    <button class="twitter">
+                        <iconify-icon icon="ri:twitter-fill" style="color: #5e3ad4;"></iconify-icon>                 
+                    </button>
+                    <button class="insta">
+                        <iconify-icon icon="ri:instagram-fill" style="color: #5e3ad4;"></iconify-icon>                  
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

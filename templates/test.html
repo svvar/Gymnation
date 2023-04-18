@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Design by foolishdeveloper.com -->
+    <title>Glassmorphism login Form Tutorial in html css</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+        *,
+        *:before,
+        *:after{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #080710;
+        }
+
+        #login-form{
+            display: none;
+            height: 60vh;
+            width: 50vw;
+            background-color: rgba(255,255,255,0.13);
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
+            {#padding: 50px 35px;#}
+        }
+        #login-form *:not(.tablinks, .final-button){
+            font-family: 'Poppins',sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+        #login-form h3{
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 42px;
+            text-align: center;
+        }
+
+        .tab{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 4%;
+        }
+
+        .tablinks{
+            width: 100%;
+            background-color: #ffffff;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 0;
+            border-radius: 0;
+            color: #000000;
+            border: none;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+          background-color: #ddd;
+        }
+
+        .tab button:focus {
+          background-color: #ddd;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+
+            height: 80%;
+            overflow-y: auto;
+        }
+
+
+        /* width */
+        .tabcontent::-webkit-scrollbar{
+            width: 10px;
+            margin: 2%;
+        }
+
+          /* Track */
+        .tabcontent::-webkit-scrollbar-track{
+            background: #D9D9D9;
+            border-radius: 5px;
+        }
+
+          /* Handle */
+        .tabcontent::-webkit-scrollbar-thumb{
+            background: #959595;
+            border-radius: 5px;
+        }
+
+
+
+        label{
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        input{
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: rgba(255,255,255,0.07);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        ::placeholder{
+            color: #e5e5e5;
+        }
+        .final-button{
+            margin-top: 50px;
+            width: 100%;
+            background-color: #ffffff;
+            color: #080710;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .social{
+          margin-top: 30px;
+          display: flex;
+        }
+        .social div{
+          background: red;
+          width: 150px;
+          border-radius: 3px;
+          padding: 5px 10px 10px 5px;
+          background-color: rgba(255,255,255,0.27);
+          color: #eaf0fb;
+          text-align: center;
+        }
+        .social div:hover{
+          background-color: rgba(255,255,255,0.47);
+        }
+        .social .fb{
+          margin-left: 25px;
+        }
+        .social i{
+          margin-right: 4px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="login-form">
+        <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'login')">Вхід</button>
+          <button class="tablinks" onclick="openTab(event, 'signup')">Реєстрація</button>
+        </div>
+
+
+        <!-- Tab content -->
+        <div id="login" class="tabcontent">
+            <h3>Вхід</h3>
+
+            <label for="username">Електронна пошта</label>
+            <input type="text" placeholder="Email" id="username">
+
+            <label for="password">Пароль</label>
+            <input type="password" placeholder="Пароль" id="password">
+
+            <button class="final-button">Увійти</button>
+        </div>
+
+        <div id="signup" class="tabcontent">
+            <h3>Реєстрація</h3>
+
+            <label for="username">Ім'я</label>
+            <input type="text" placeholder="Ім'я" id="username">
+
+            <label for="username">Прізвище</label>
+            <input type="text" placeholder="Прізвище" id="username">
+
+            <label for="username">Телефон</label>
+            <input type="text" placeholder="380ХХХХХХХХХ" id="username">
+
+            <label for="username">Електронна пошта</label>
+            <input type="text" placeholder="Email" id="username">
+
+            <label for="password">Пароль</label>
+            <input type="password" placeholder="Пароль" id="password">
+
+            <label for="password">Повторіть пароль</label>
+            <input type="password" placeholder="Пароль" id="password">
+
+            <button class="final-button">Зареєструватися</button>
+        </div>
+
+
+    </div>
+
+    <script>
+        document.getElementById("login").click();
+
+        function openTab(evt, tabName) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(tabName).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+
+        const myButton = document.getElementById('login-button');
+        const myDiv = document.getElementById('login-form');
+
+        myButton.addEventListener('click', () => {
+            myDiv.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
