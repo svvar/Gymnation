@@ -82,9 +82,13 @@
 
             <div class="right-block">
                 <h1>Тренер:</h1>
-                <h2>NNNAMAMA MAMAMA</h2>
-                <h2>=27827387387</h2>
-                <img src="static/images/IMG_0692_ppaa-scaled.jpg">
+                {% if user.trainer is not None %}
+                    <h2>{{ user.trainer.last_name }} {{ user.trainer.first_name }}</h2>
+                    <h2>{{ user.trainer.phone_number }}</h2>
+                    <img src="mediaStorage/{{ user.trainer.photo }}">
+                {% else %}
+                    <h2>Тренера не обрано, зверніться до адміністратора</h2>
+                {% endif %}
             </div>
         </div>
 

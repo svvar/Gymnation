@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <html>
+    <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
@@ -16,7 +16,8 @@
         <link rel="stylesheet" href="{% static 'css/cart-style-4.css' %}" media="screen and (min-width: 300px) and (max-width: 700px)">
 
         <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
-    </html>
+
+    </head>
     <body>
         <div class="header">
             <input id="menu__toggle" type="checkbox" />
@@ -38,7 +39,11 @@
                 </div>
                 <div>
                     <div class="vh"></div>
-                    <a href="index.html">Профіль</a>
+                    {% if user.is_authenticated %}
+                        <a id="profile-button" href="profile.html">Профіль</a>
+                    {% else %}
+                        <a id="no-auth" href="login-dialog.html">Увійти</a>
+                    {% endif %}
                     <div class="vh"></div>
                     <a class="cart-ico" href="cart.html"><iconify-icon icon="material-symbols:shopping-cart"></iconify-icon></a>
                 </div>
@@ -48,76 +53,60 @@
         <div class="content">
             <div class="item-list">
                 <h2>Ваш кошик</h2>
-                <h3>В кошику 3 позиції</h3>
-                <div class="item" id="i1">
-                    <img src="{% static 'images/207498326.jpg' %}">
-                    <div class="desc">
-                        <h4>BioTech USA 100% Pure Whey</h4>
-                        <h5>Банан 2270г</h5>
+                {% for item in cart_items %}
+                    <div class="item" id="{{ item.id }}">
+                        <img src="{{ item.product.picture }}">
+                        <div class="desc">
+                            <h4>{{ item.product.name }}</h4>
+                            <h5>{{ item.taste }} {{ item.product.weight }}г</h5>
+                        </div>
+                        <div class="amount">
+                            <h3>{{ item.quantity }}</h3>
+                            <div class="amount-buttons">
+                                <form action="{% url 'change_quantity' 'plus' item.id%}" method="post">
+                                    {% csrf_token %}
+                                    <button><iconify-icon icon="mdi:triangle"></iconify-icon></button>
+                                </form>
+                                <form action="{% url 'change_quantity' 'minus' item.id%}" method="post">
+                                    {% csrf_token %}
+                                    <button><iconify-icon icon="mdi:triangle-down"></iconify-icon></button>
+                                </form>
+                            </div>
+                        </div>
+                        <h3 class="price">{{ item.total }} грн</h3>
+                        <form action="{% url 'remove_from_cart' item.id %}" method="post">
+                            {% csrf_token %}
+                            <button class="trash"><iconify-icon icon="fa6-regular:trash-can"></iconify-icon></button>
+                        </form>
                     </div>
-                    <h3 class="amount">1</h3>
-                    <div class="amount-buttons">
-                        <button><iconify-icon icon="mdi:triangle"></iconify-icon></button>
-                        <button><iconify-icon icon="mdi:triangle-down"></iconify-icon></button>                        
-                    </div>
-                    <h3 class="price">$ 681</h3>
-                    <button class="trash"><iconify-icon icon="fa6-regular:trash-can"></iconify-icon></button>
-                </div>
-                <div class="item" id="i2">
-                    <img src="{% static 'images/207498326.jpg' %}">
-                    <div class="desc">
-                        <h4>BioTech USA 100% Pure Whey</h4>
-                        <h5>Банан 2270г</h5>
-                    </div>
-                    <h3 class="amount">1</h3>
-                    <div class="amount-buttons">
-                        <button><iconify-icon icon="mdi:triangle"></iconify-icon></button>
-                        <button><iconify-icon icon="mdi:triangle-down"></iconify-icon></button>                      
-                    </div>
-                    <h3 class="price">$ 681</h3>
-                    <button class="trash"><iconify-icon icon="fa6-regular:trash-can"></iconify-icon></button>
-                </div>
-                <div class="item" id="i3">
-                    <img src="{% static 'images/207498326.jpg' %}">
-                    <div class="desc">
-                        <h4>BioTech USA 100% Pure Whey</h4>
-                        <h5>Банан 2270г</h5>
-                    </div>
-                    <h3 class="amount">1</h3>
-                    <div class="amount-buttons">
-                        <button><iconify-icon icon="mdi:triangle"></iconify-icon></button>
-                        <button><iconify-icon icon="mdi:triangle-down"></iconify-icon></button>                      
-                    </div>
-                    <h3 class="price">$ 681</h3>
-                    <button class="trash"><iconify-icon icon="fa6-regular:trash-can"></iconify-icon></button>
-                </div>
+                {% endfor %}
             </div>
 
-            <div class="payment">
+            <div class="payment" id="payment">
                 <div class="user">
-                    <h2 class="name">Климюк Данило-Олександр</h2>
+                    <h2 class="name">{{ user.first_name }} {{ user.last_name }}</h2>
                     <div class="photo">
-                        <img src="{% static 'images\bannon-morrissy-RxiAV5LC-ww-unsplash.jpg' %}">
+                        <img src="{{ user.photo }}">
                     </div>
                     <!-- <img class="photo" src="images\bannon-morrissy-RxiAV5LC-ww-unsplash.jpg"> -->
                 </div>
-                <div class="payment-method">
+                <div class="payment-method-selector">
                     <h2>Виберіть спосіб оплати</h2>
                     <div>
-                        <input type="radio" id="cash"/>
+                        <input type="radio" id="cash" name="payment-method" value="cash"/>
                         <label for="cash">Готівкою при отриманні</label>
                     </div>
                     <div>
-                        <input type="radio" id="saved"/>
+                        <input type="radio" id="saved" name="payment-method" value="saved"/>
                         <label for="saved"><iconify-icon icon="icon-park-solid:bank-card"></iconify-icon>&nbsp;*166</label>
                     </div>
                     <div>
-                        <input type="radio" id="card"/>
+                        <input type="radio" id="card" name="payment-method" value="card"/>
                         <label for="card">Додати картку</label>
                     </div>
                 </div>
                 <hr>
-                <div class="card-info">
+                <div class="card-info" id="card-info">
                     <div class="number">
                         <p>Номер картки</p>
                         <input type="text" id="number"  minlength="16" maxlength="16" size="10">
@@ -135,13 +124,32 @@
                 <hr>
                 <div class="total">
                     <h3>Всього до сплати</h3>
-                    <h3>9999 грн</h3>
+                    <h3>{{ cart_total }} грн</h3>
                 </div>
                 <button>
-                    <h3>9999 грн</h3>
-                    <h3>Сплатити<iconify-icon icon="material-symbols:arrow-right-alt"></iconify-icon></h3>
+                    <h3>{{ cart_total }} грн</h3>
+                    <h3>Купити<iconify-icon icon="material-symbols:arrow-right-alt"></iconify-icon></h3>
                 </button>
             </div>
+            <script>
+                const cardFields = document.getElementById('card-info');
+                {#const paymentWidget = document.getElementById('payment');#}
+
+                function handleRadioClick() {
+                  if (document.getElementById('card').checked) {
+                    cardFields.style.display = 'flex';
+                    {#paymentWidget.style.height = '90%';#}
+                  } else {
+                    cardFields.style.display = 'none';
+                    {#paymentWidget.style.height = '70%';#}
+                  }
+                }
+
+                const radioButtons = document.querySelectorAll('input[name="payment-method"]');
+                radioButtons.forEach(radio => {
+                  radio.addEventListener('click', handleRadioClick);
+                });
+            </script>
         </div>
 
         <footer>

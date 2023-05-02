@@ -80,10 +80,10 @@ body{
   left: 0%;
   top: 0%;
   width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 }
 
 .top_section{
@@ -281,7 +281,7 @@ body{
     padding: 2% 1% 2% 1%;
 }
 
-.main-area > .goods > div{
+.main-area > .goods > form{
     background-color: #FFFFFF;
     border-radius: 8px;
     height: 47vh;
@@ -292,13 +292,13 @@ body{
     flex-direction: row;
 }
 
-.main-area > .goods > div > img{
+.main-area > .goods > form > img{
     width: 40%;
     object-fit: contain;
     margin: 3%;
 }
 
-.main-area > .goods > div > .card-info{
+.main-area > .goods > form > .card-info{
     width: 55%;
     padding: 3%;
     display: flex;

@@ -35,7 +35,11 @@
                 </div>
                 <div>
                     <div class="vh"></div>
-                    <a href="index.html">Профіль</a>
+                    {% if user.is_authenticated %}
+                        <a id="profile-button" href="profile.html">Профіль</a>
+                    {% else %}
+                        <a id="no-auth" href="login-dialog.html">Увійти</a>
+                    {% endif %}
                     <div class="vh"></div>
                     <a class="cart-ico" href="cart.html"><iconify-icon icon="material-symbols:shopping-cart"></iconify-icon></a>
                 </div>

@@ -11,21 +11,7 @@ class GymUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    # def create_superuser(self, email, password=None, **extra_fields):
-    #     extra_fields.setdefault('is_staff', True)
-    #     extra_fields.setdefault('is_superuser', True)
-    #
-    #     if extra_fields.get('is_staff') is not True:
-    #         raise ValueError('Superuser must have is_staff=True.')
-    #     if extra_fields.get('is_superuser') is not True:
-    #         raise ValueError('Superuser must have is_superuser=True.')
-    #
-    #     return self.create_user(email, password, **extra_fields)
-
     def create_staffuser(self, first_name, last_name, phone, email, password):
-        """
-        Creates and saves a staff user with the given email and password.
-        """
         user = self.create_user(
             first_name,
             last_name,
@@ -38,9 +24,6 @@ class GymUserManager(BaseUserManager):
         return user
 
     def create_superuser(self, first_name, last_name, phone, email, password):
-        """
-        Creates and saves a superuser with the given email and password.
-        """
         user = self.create_user(
             first_name,
             last_name,
@@ -76,10 +59,10 @@ class GymUser(AbstractBaseUser, PermissionsMixin):
     phone = models.CharField(max_length=15)
     email = models.EmailField(unique=True)
 
-    photo = models.ImageField(upload_to='mediaStorage/users', null=True, blank=True)
+    photo = models.ImageField(upload_to='users', null=True, blank=True)
     club = models.CharField(max_length=100, choices=CLUB_CHOICES, null=True, blank=True)
     plan = models.CharField(max_length=20, choices=PLANS_CHOICES, null=True, blank=True)
-    # trainer = models.CharField(max_length=100)
+    trainer = models.ForeignKey('app.GymTrainer', on_delete=models.CASCADE, null=True, blank=True)
 
     is_staff = models.BooleanField(default=False, null=True, blank=True)  # a admin user; non super-user
     is_superuser = models.BooleanField(default=False, null=True, blank=True)  # a superuser
@@ -91,3 +74,5 @@ class GymUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+

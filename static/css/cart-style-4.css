@@ -190,7 +190,7 @@ body{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
     width: 92%;
     height: 22%;
@@ -208,13 +208,11 @@ body{
     width: 16%;
     object-fit: cover;
 
-    position: relative;
-    left: 0%;    
+    margin: 0 1% 0 1%;
 }
 
 .content > .item-list > .item > .desc{
-    position: relative;
-    left: 2%;
+    width: 50%;
 }
 
 .content > .item-list > .item > .desc > h4{
@@ -245,6 +243,12 @@ body{
 }
 
 .content > .item-list > .item > .amount{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.content > .item-list > .item > .amount > h3{
     font-family: 'Nunito', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -257,21 +261,14 @@ body{
     font-feature-settings: 'pnum' on, 'lnum' on;
 
     color: #393939;
-
-    position: relative;
-    left: -2%;
-
 }
 
-.content > .item-list > .item > .amount-buttons{
+.content > .item-list > .item > .amount > .amount-buttons{
     display: flex;
     flex-direction: column;
-    position: relative;
-    left: -2%;
-
 }
 
-.content > .item-list > .item > .amount-buttons > button{
+.content > .item-list > .item > .amount > .amount-buttons > form > button{
     font-size: 12px;
     background: none;
     border: transparent;
@@ -287,7 +284,7 @@ body{
 
 }
 
-.content > .item-list > .item > .trash{
+.content > .item-list > .item > form > .trash{
     padding: 0;
     font-size: 20px;
     background: none;
@@ -343,7 +340,7 @@ body{
     object-fit: cover;
 }
 
-.payment > .payment-method{
+.payment > .payment-method-selector{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -352,7 +349,7 @@ body{
     height: 30%;
 }
 
-.payment > .payment-method > h2{
+.payment > .payment-method-selector > h2{
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -363,7 +360,7 @@ body{
     color: #FFFFFF;
 }
 
-.payment > .payment-method > div{
+.payment > .payment-method-selector > div{
     width: 100%;
     height: 28%;
     background: #A4A7F7;
@@ -376,7 +373,7 @@ body{
     align-items: center;
 }
 
-.payment > .payment-method > div > input{
+.payment > .payment-method-selector > div > input{
     height: 75%;
     width: 10%;
     margin: 0%;
@@ -385,7 +382,7 @@ body{
     background-color: #FFFFFF; */
 }
 
-.payment > .payment-method > div > label{
+.payment > .payment-method-selector > div > label{
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -403,7 +400,7 @@ body{
 }
 
 .payment > .card-info{
-    display: flex;
+    display: none; /* flex when active */
     flex-direction: row;
     flex-wrap: wrap;
     align-items: start;

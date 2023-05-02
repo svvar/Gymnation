@@ -288,7 +288,7 @@ body{
     padding: 2% 1% 2% 1%;
 }
 
-.main-area > .goods > div{
+.main-area > .goods > form{
     background-color: #FFFFFF;
     border-radius: 8px;
     height: 36vh;
@@ -300,13 +300,13 @@ body{
     flex-direction: row;
 }
 
-.main-area > .goods > div > img{
+.main-area > .goods > form > img{
     width: 30%;
     object-fit: contain;
     margin: 3%;
 }
 
-.main-area > .goods > div > .card-info{
+.main-area > .goods > form > .card-info{
     width: 65%;
     padding: 2%;
     display: flex;

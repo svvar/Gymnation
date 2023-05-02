@@ -47,38 +47,6 @@
                     <a class="cart-ico" href="cart.html"><iconify-icon icon="material-symbols:shopping-cart"></iconify-icon></a>
                 </div>
             </div>
-{#            <div id="modal-login" class="modal">#}
-{#                {% include 'login-dialog.html' %}#}
-{#            </div>#}
-{#            <script>#}
-{#                // Get the modal#}
-{#                var modal = document.getElementById("modal-login");#}
-{#                console.log(modal)#}
-{##}
-{#                // Get the button that opens the modal#}
-{#                var btn = document.getElementById("no-auth");#}
-{#                console.log(btn)#}
-{##}
-{#                // Get the <span> element that closes the modal#}
-{#                var span = document.getElementsByClassName("close")[0];#}
-{##}
-{#                // When the user clicks on the button, open the modal#}
-{#                btn.onclick = function() {#}
-{#                  modal.style.display = "block";#}
-{#                }#}
-{##}
-{#                // When the user clicks on <span> (x), close the modal#}
-{#                span.onclick = function() {#}
-{#                  modal.style.display = "none";#}
-{#                }#}
-{##}
-{#                // When the user clicks anywhere outside of the modal, close it#}
-{#                window.onclick = function(event) {#}
-{#                  if (event.target == modal) {#}
-{#                    modal.style.display = "none";#}
-{#                  }#}
-{#                }#}
-{#            </script>#}
         </div>
 
 
@@ -136,12 +104,9 @@
                 </form>
                 <button id="apply-filters">Застосувати фільтри</button>
 
-                <!-- JavaScript code for handling checkbox changes -->
                 <script>
-                    // Get all the checkboxes
                     const checkboxes = document.querySelectorAll('input[type=checkbox]');
 
-                    // add change event listeners to the checkboxes
                     checkboxes.forEach((checkbox) => {
                       checkbox.addEventListener('change', () => {
                         // save the state of the checkbox to localStorage
@@ -200,23 +165,35 @@
 
             <div class="goods">
                 {% for p in products %}
-                <div>
+                <form action="{% url 'add_to_cart' p.id %}?selected_taste=Без смаку" method="post" class="product-form">
+                    {% csrf_token %}
                     <img src="{{ p.picture }}">
                     <div class="card-info">
                         <h3>{{ p.name}}</h3>
                         <p>{{ p.weight }} г</p>
-                        <select class="taste-selector">
+                        <select class="taste-selector" name="tastes" onchange="updateFormAction(this.form)">
                             {% for taste in p.tastes %}
-                            <option value="vanilla">{{ p.tastes|get_item:taste }}</option>
+                                <option value="{{ p.tastes|get_item:taste }}">{{ p.tastes|get_item:taste }}</option>
                             {% endfor %}
                         </select>
                         <div class="pricecart">
                             <h4>{{ p.price }} грн</h4>
-                            <button>В кошик</button>
+                            <button type="submit">В кошик</button>
                         </div>
                     </div>
-                </div>
+                </form>
                 {% endfor %}
+
+                <script>
+                    function updateFormAction(form) {
+                        var selectedTaste = form.querySelector('.taste-selector').value;
+                        console.log(selectedTaste)
+                        var actionUrl = form.getAttribute('action');
+                        console.log(actionUrl)
+                        var newActionUrl = actionUrl + '?selected_taste=' + encodeURIComponent(selectedTaste);
+                        form.setAttribute('action', newActionUrl);
+                    }
+                </script>
 
                 <div class="page-number">
                     {% if products.has_other_pages %}
@@ -241,18 +218,6 @@
                         {% endif %}
                     {% endif %}
                 </div>
-
-
-{#                <div class="page-number">#}
-{#                    <button id="p1">1</button>#}
-{#                    <button id="p2">2</button>#}
-{#                    <button id="p3">3</button>#}
-{#                    <button id="p4">4</button>#}
-{#                    <button id="p5">5</button>#}
-{#                    <button id="p6">6</button>#}
-{#                    <button id="p7">7</button>#}
-{#                    <button id="p8">8</button>#}
-{#                </div>#}
             </div>
         </div>
 

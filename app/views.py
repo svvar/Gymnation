@@ -13,6 +13,7 @@ from django.contrib.auth.models import User
 from .forms import RegistrationForm
 from .accounts.forms import RegisterForm
 from .accounts.models import GymUser
+from .models import Cart
 
 def index(request):
     if request.user.is_authenticated:
@@ -22,8 +23,6 @@ def index(request):
 def clubs(request):
     return render(request, "clubs.html")
 
-def cart(request):
-    return render(request, "cart.html")
 
 def prices(request):
     return render(request, "prices.html")
@@ -53,11 +52,10 @@ def get_all_filter_values(category:str):
 
     return {'manufacturers': manufacturers, 'tastes': tastes, 'p_types': p_types}
 
-def test(request):
-
-    return render(request, 'test.html')
-
 def shop(request):
+    taste = request.POST.get("tastes")
+    print(taste)
+
 
     category = request.GET.get("category")
     manufacturers = request.GET.getlist('manufacturer')
@@ -124,7 +122,7 @@ def profile(request):
 
 
     context = {'user': request.user}
-    print(request.user.photo)
+    print(context)
     return render(request, 'profile.html', context)
 
 def login_page(request):
@@ -162,3 +160,50 @@ def login_page(request):
     return render(request, "login-dialog.html")
 
 
+
+@login_required
+def cart(request):
+    cart_items = Cart.objects.filter(user=request.user)
+    print(cart_items)
+    cart_total_value = 0
+    for item in cart_items:
+        item.product = Products.objects.get(id=item.product_id)
+        cart_total_value += item.total()
+
+    context = {'cart_items': cart_items, 'cart_total': cart_total_value}
+    return render(request, 'cart.html', context)
+
+@login_required
+def add_to_cart(request, product_id):
+    selected_taste = request.GET.get("selected_taste")
+    print(selected_taste)
+
+
+    product = Products.objects.get(id=product_id)
+    cart_item = Cart(user=request.user, product=product, taste=selected_taste, price=product.price, quantity=1)
+    cart_item.save()
+    messages.success(request, f"{product.name} added to cart")
+    return redirect('cart')
+
+@login_required
+def remove_from_cart(request, cart_id):
+    cart_item = Cart.objects.get(id=cart_id)
+    if cart_item.user == request.user:
+        cart_item.delete()
+        messages.success(request, f"{cart_item.product.name} removed from cart")
+    else:
+        messages.error(request, "You don't have permission to remove this item from the cart.")
+    return redirect('cart')
+
+@login_required
+def change_quantity(request, action, cart_id):
+    print(action)
+
+    cart_item = Cart.objects.get(id=cart_id)
+    if action == "plus":
+        cart_item.quantity += 1
+    elif action == "minus" and cart_item.quantity >= 2:
+        cart_item.quantity -= 1
+
+    cart_item.save()
+    return redirect('cart')

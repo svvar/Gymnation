@@ -1,14 +1,12 @@
 from django.contrib import admin
-from .models import Products, Translations, Clubs, Plans
+from .models import Products, GymTrainer
 from .accounts.models import GymUser
 
-class imageAdmin(admin.ModelAdmin):
+class ProductAdmin(admin.ModelAdmin):
     list_display = ["name", "picture"]
 
-class listTranslations(admin.ModelAdmin):
-    list_display = ["urlName", "uaName"]
+# class TrainerAdmin(admin.ModelAdmin):
+#     list_display = ["last_name", "first_name"]
 
-admin.site.register(Products, imageAdmin)
-admin.site.register(Translations, listTranslations)
-admin.site.register(Clubs)
-admin.site.register(Plans)
+admin.site.register(Products, ProductAdmin)
+admin.site.register(GymTrainer)

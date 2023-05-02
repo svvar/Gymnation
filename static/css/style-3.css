@@ -374,7 +374,7 @@ h1{
     gap: 10vw;
 }
 
-.buttons button{
+.buttons > a{
     background: rgba(94, 58, 212, 0.8);
     border: 6px solid rgba(83, 66, 141, 0.5);
     box-shadow: 0px 0px 20px 10px rgba(141, 34, 206, 0.46);
@@ -385,9 +385,14 @@ h1{
     font-weight: 500;
     font-size: 26px;
     line-height: 35px;
-    text-align: center;
     color: #FFFFFF;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+    text-decoration: none;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
     width: 25vw;
     height: 11vh;

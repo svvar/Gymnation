@@ -338,7 +338,7 @@ body{
     padding: 2% 1% 2% 1%;
 }
 
-.main-area > .goods > div:not(.page-number){
+.main-area > .goods > form:not(.page-number){
     background-color: #FFFFFF;
     border-radius: 8px;
     height: 44vh;
@@ -351,13 +351,13 @@ body{
     align-items: center;
 }
 
-.main-area > .goods > div > img{
+.main-area > .goods > form > img{
     width: 30%;
     object-fit: contain;
     margin: 3%;
 }
 
-.main-area > .goods > div > .card-info{
+.main-area > .goods > form > .card-info{
     width: 65%;
     padding: 3%;
     display: flex;

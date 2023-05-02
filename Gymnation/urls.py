@@ -23,5 +23,5 @@ from Gymnation import settings
 urlpatterns = [
     path("", include("app.urls")),
     path('admin/', admin.site.urls),
-    re_path(r'^mediaStorage/(?P<path>.*)$', serve, kwargs={'document_root': settings.MEDIA_ROOT})
+    re_path(r'mediaStorage/(?P<path>.*)$', serve, kwargs={'document_root': settings.MEDIA_ROOT})
 ]
