@@ -1,7 +1,7 @@
-* { 
-    -moz-box-sizing: border-box; 
-    -webkit-box-sizing: border-box; 
-     box-sizing: border-box; 
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+     box-sizing: border-box;
 }
 
 body{
@@ -39,7 +39,7 @@ body{
     width: 24px;
     height: 26px;
     cursor: pointer;
-    z-index: 1;
+    z-index: 3;
 
     width: 10%;
 }
@@ -75,6 +75,7 @@ body{
     text-align: center;
     background-color: #ECEFF1;
     box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+    z-index: 2;
 }
 
 .header > div > .vh{
@@ -103,6 +104,22 @@ body{
     border: none;
     color: #000000;
     text-decoration: none;
+    cursor: pointer;
+
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0%;
+    top: 0%;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 .header > .menu-buttons > div > a > iconify-icon{
@@ -551,7 +568,7 @@ footer .tabs{
 
 }
 
-footer .tabs h5{
+footer .tabs a{
     font-family: 'Work Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -646,6 +663,6 @@ footer > .socials > .logos > .twitter, .insta{
 
 }
 
-footer > .socials > .logos > button > iconify-icon{
+footer > .socials > .logos > a > iconify-icon{
     font-size: 2vh;
 }

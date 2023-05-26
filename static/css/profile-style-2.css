@@ -290,7 +290,7 @@ footer .tabs{
     width: 24%;
 }
 
-footer .tabs h5{
+footer .tabs a{
     font-family: 'Work Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -397,6 +397,6 @@ footer > .socials > .logos > .twitter, .insta{
 
 }
 
-footer > .socials > .logos > button > iconify-icon{
+footer > .socials > .logos > a > iconify-icon{
     font-size: 3vh;
 }

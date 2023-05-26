@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work Sans">        
         <link rel="stylesheet" href="{% static 'css/clubs-style-1.css' %}" media="screen and (min-width: 1400px)">
         <link rel="stylesheet" href="{% static 'css/clubs-style-2.css' %}" media="screen and (min-width: 1000px) and (max-width: 1400px)">
-        <link rel="stylesheet" href="{% static 'css/clubs-style-3.css' %}" media="screen and (min-width: 00px) and (max-width: 1000px)">
+        <link rel="stylesheet" href="{% static 'css/clubs-style-3.css' %}" media="screen and (min-width: 700px) and (max-width: 1000px)">
         <link rel="stylesheet" href="{% static 'css/clubs-style-4.css' %}" media="screen and (min-width: 300px) and (max-width: 700px)">
 
         <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
@@ -41,7 +41,11 @@
                         <a id="no-auth" href="login-dialog.html">Увійти</a>
                     {% endif %}
                     <div class="vh"></div>
-                    <a class="cart-ico" href="cart.html"><iconify-icon icon="material-symbols:shopping-cart"></iconify-icon></a>
+                    {% if user.is_authenticated %}
+                        <a class="cart-ico" href="cart.html"><iconify-icon icon="material-symbols:shopping-cart"></iconify-icon></a>
+                    {% else %}
+                        <a class="cart-ico" href="login-dialog.html"><iconify-icon icon="material-symbols:shopping-cart"></iconify-icon></a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -115,12 +119,18 @@
             </div>
 
             <div class="tabs">
-                <h5>Головна</h5>
-                <h5>Тарифи</h5>
-                <h5>Харчування</h5>
-                <h5>Профіль</h5>
-                <h5>Клуби</h5>
-                <h5>Кошик</h5>
+                <a href="index.html">Головна</a>
+                <a href="prices.html">Тарифи</a>
+                <a href="shop.html">Харчування</a>
+                {% if user.is_authenticated %}
+                    <a href="profile.html">Профіль</a>
+                {% else %}
+                    <a href="login-dialog.html">Вхід</a>
+                {% endif %}
+                <a href="clubs.html">Клуби</a>
+                {% if user.is_authenticated %}
+                    <a href="cart.html">Кошик</a>
+                {% endif %}
             </div>
 
             <div class="contacts">
@@ -138,18 +148,18 @@
             <div class="socials">
                 <h4>Соцмережі</h4>
                 <div class="logos">
-                    <button class="facebook">
-                        <iconify-icon icon="ri:facebook-fill" style="color: white;"></iconify-icon>                  
-                    </button>
-                    <button class="telegram">
-                        <iconify-icon icon="mingcute:telegram-fill" style="color: white;"></iconify-icon>       
-                    </button>
-                    <button class="twitter">
-                        <iconify-icon icon="ri:twitter-fill" style="color: #5e3ad4;"></iconify-icon>                 
-                    </button>
-                    <button class="insta">
-                        <iconify-icon icon="ri:instagram-fill" style="color: #5e3ad4;"></iconify-icon>                  
-                    </button>
+                    <a href="https://www.facebook.com/" class="facebook">
+                        <iconify-icon icon="ri:facebook-fill" style="color: white;"></iconify-icon>
+                    </a>
+                    <a href="https://t.me/zk215" class="telegram">
+                        <iconify-icon icon="mingcute:telegram-fill" style="color: white;"></iconify-icon>
+                    </a>
+                    <a href="https://twitter.com/" class="twitter">
+                        <iconify-icon icon="ri:twitter-fill" style="color: #5e3ad4;"></iconify-icon>
+                    </a>
+                    <a href="https://www.instagram.com/" class="insta">
+                        <iconify-icon icon="ri:instagram-fill" style="color: #5e3ad4;"></iconify-icon>
+                    </a>
                 </div>
             </div>
         </footer>

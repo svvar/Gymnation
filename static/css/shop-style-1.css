@@ -267,38 +267,45 @@ body{
     border-radius: 5px;
 }
 
+.main-area > .goods-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-
-.main-area > .goods{
     width: 80%;
+}
 
+
+
+.main-area > .goods-main > .goods{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-content: flex-start;
     align-items: center;
-    padding: 2% 1% 2% 1%;
+    padding: 2% 2% 0% 2%;
 }
 
-.main-area > .goods > form{
+.main-area > .goods-main > .goods > form{
     background-color: #FFFFFF;
     border-radius: 8px;
     height: 47vh;
-    width: 48%;
+    width: 48.5%;
     margin-bottom: 3%;
 
     display: flex;
     flex-direction: row;
 }
 
-.main-area > .goods > form > img{
+.main-area > .goods-main > .goods > form > img{
     width: 40%;
     object-fit: contain;
     margin: 3%;
 }
 
-.main-area > .goods > form > .card-info{
+.main-area > .goods-main > .goods > form > .card-info{
     width: 55%;
     padding: 3%;
     display: flex;
@@ -306,7 +313,7 @@ body{
     flex-wrap: wrap;
 }
 
-.main-area > .goods > .page-number{
+.main-area > .goods-main > .page-number{
     background-color: #5e3ad4;
     height: 5vh;
     display: flex;
@@ -314,9 +321,10 @@ body{
     justify-content: center;
     align-items: center;
     gap: 2vw;
+    margin-bottom: 2%;
 }
 
-.main-area > .goods > .page-number > button{
+.main-area > .goods-main > .page-number > button{
     border: none;
     background: transparent;
 
@@ -329,7 +337,7 @@ body{
     color: #FFFFFF;
 }
 
-.main-area > .goods > .page-number > button > a{
+.main-area > .goods-main > .page-number > button > a{
     border: none;
     background: transparent;
 
@@ -343,11 +351,11 @@ body{
     text-decoration: none;
 }
 
-.main-area > .goods > .page-number > .active{
+.main-area > .goods-main > .page-number > .active{
     text-decoration: underline;
 }
 
-.main-area > .goods > .page-number > .disabled{
+.main-area > .goods-main > .page-number > .disabled{
     display: none;
 }
 
@@ -471,7 +479,7 @@ footer .tabs{
     width: 25%;
 }
 
-footer .tabs h5{
+footer .tabs a{
     font-family: 'Work Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -579,6 +587,6 @@ footer > .socials > .logos > .twitter, .insta{
 }
 
 
-footer > .socials > .logos > button > iconify-icon{
+footer > .socials > .logos > a > iconify-icon{
     font-size: 4vh;
 }

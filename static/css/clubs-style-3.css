@@ -1,7 +1,7 @@
-* { 
-    -moz-box-sizing: border-box; 
-    -webkit-box-sizing: border-box; 
-     box-sizing: border-box; 
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+     box-sizing: border-box;
 }
 
 body{
@@ -494,7 +494,7 @@ footer .tabs{
 
 }
 
-footer .tabs h5{
+footer .tabs a{
     font-family: 'Work Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -589,6 +589,6 @@ footer > .socials > .logos > .twitter, .insta{
 
 }
 
-footer > .socials > .logos > button > iconify-icon{
+footer > .socials > .logos > a > iconify-icon{
     font-size: 3vh;
 }

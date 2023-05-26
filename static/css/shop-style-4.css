@@ -325,9 +325,14 @@ body{
     border-radius: 5px;
 }
 
+.main-area > .goods-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-
-.main-area > .goods{
+.main-area > .goods-main > .goods{
 
     display: flex;
     flex-direction: column;
@@ -335,13 +340,13 @@ body{
     justify-content: normal;
     align-content: space-between;
     align-items: center;
-    padding: 2% 1% 2% 1%;
+    padding: 2% 1% 1% 1%;
 }
 
-.main-area > .goods > form:not(.page-number){
+.main-area > .goods-main > .goods > form:not(.page-number){
     background-color: #FFFFFF;
     border-radius: 8px;
-    height: 44vh;
+    height: 33vh;
     width: 95%;
 
     margin-bottom: 3%;
@@ -351,13 +356,13 @@ body{
     align-items: center;
 }
 
-.main-area > .goods > form > img{
+.main-area > .goods-main > .goods > form > img{
     width: 30%;
     object-fit: contain;
     margin: 3%;
 }
 
-.main-area > .goods > form > .card-info{
+.main-area > .goods-main > .goods > form > .card-info{
     width: 65%;
     padding: 3%;
     display: flex;
@@ -365,7 +370,7 @@ body{
     flex-wrap: wrap;
 }
 
-.main-area > .goods > .page-number{
+.main-area > .goods-main > .page-number{
     background-color: #5e3ad4;
     height: 5vh;
     display: flex;
@@ -373,9 +378,10 @@ body{
     justify-content: center;
     align-items: center;
     gap: 2vw;
+    margin-bottom: 2%;
 }
 
-.main-area > .goods > .page-number > button{
+.main-area > .goods-main > .page-number > button{
     border: none;
     background: transparent;
 
@@ -388,7 +394,7 @@ body{
     color: #FFFFFF;
 }
 
-.main-area > .goods > .page-number > button > a{
+.main-area > .goods-main > .page-number > button > a{
     border: none;
     background: transparent;
 
@@ -402,11 +408,11 @@ body{
     text-decoration: none;
 }
 
-.main-area > .goods > .page-number > .active{
+.main-area > .goods-main > .page-number > .active{
     text-decoration: underline;
 }
 
-.main-area > .goods > .page-number > .disabled{
+.main-area > .goods-main > .page-number > .disabled{
     display: none;
 }
 
@@ -541,7 +547,7 @@ footer .tabs{
 
 }
 
-footer .tabs h5{
+footer .tabs a{
     font-family: 'Work Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -636,6 +642,6 @@ footer > .socials > .logos > .twitter, .insta{
 
 }
 
-footer > .socials > .logos > button > iconify-icon{
+footer > .socials > .logos > a > iconify-icon{
     font-size: 2vh;
 }

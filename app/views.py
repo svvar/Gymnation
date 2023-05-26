@@ -29,7 +29,7 @@ def prices(request):
 
 def get_all_filter_values(category:str):
     manufacturers = set()
-    tastes = dict()
+    tastes = set()
     p_types = set()
 
     products = Products.objects.filter(category=category)
@@ -38,55 +38,56 @@ def get_all_filter_values(category:str):
         if p.manufacturer not in manufacturers:
             manufacturers.add(p.manufacturer)
 
-        for taste in p.tastes:
+        for taste in p.tastes.split(","):
             if taste not in tastes:
-                tastes.update({taste: p.tastes[taste]})
+                tastes.add(taste)
 
         if p.p_type not in p_types:
             p_types.add(p.p_type)
 
 
     manufacturers = sorted(manufacturers)
-    tastes = dict(sorted(tastes.items(), key=lambda item: item[1]))
+    tastes = sorted(tastes)
     p_types = sorted(p_types)
 
-    return {'manufacturers': manufacturers, 'tastes': tastes, 'p_types': p_types}
+    return {'all_manufacturers': manufacturers, 'all_tastes': tastes, 'all_p_types': p_types}
 
 def shop(request):
     taste = request.POST.get("tastes")
-    print(taste)
 
-
-    category = request.GET.get("category")
-    manufacturers = request.GET.getlist('manufacturer')
-    tastes = request.GET.getlist('taste')
-    p_types = request.GET.getlist('type')
+    selected_category = request.GET.get("category")
+    selected_manufacturers = request.GET.getlist('manufacturer')
+    selected_tastes = request.GET.getlist('taste')
+    print(selected_tastes)
+    selected_p_types = request.GET.getlist('type')
 
     page_number = request.GET.get('page')
+    if page_number is None:
+        page_number = 1
 
-    if category is None:
-        category = "protein"
+    if selected_category is None:
+        selected_category = "protein"
 
     try:
-        if manufacturers[0]:
+        if selected_manufacturers[0]:
             manufact_query = Q()
-            for m in manufacturers[0].split(","):
+            for m in selected_manufacturers[0].split(","):
                 manufact_query |= Q(manufacturer=m)
 
-        if tastes[0]:
+        if selected_tastes[0]:
             tastes_query = Q()
-            for t in tastes[0].split(","):
-                tastes_query &= Q(tastes=t)
+            for t in selected_tastes[0].split(","):
+                tastes_query |= Q(tastes__icontains=t)
 
-        if p_types[0]:
+        if selected_p_types[0]:
             types_query = Q()
-            for t in p_types[0].split(","):
+            for t in selected_p_types[0].split(","):
                 types_query |= Q(p_type=t)
 
     except IndexError:
         pass
 
-    filter_query = Q(category=category)
+    filter_query = Q(category=selected_category)
     try:
         filter_query &= manufact_query
     except NameError:
@@ -102,14 +103,22 @@ def shop(request):
     except NameError:
         pass
 
+    print(filter_query)
+    print(Products.objects.filter(name="Biotech Beef Protein")[0].tastes)
+
     # Get the products that match the filter query
     products = Products.objects.filter(filter_query)
 
     pages = Paginator(products, 8)
     page_obj = pages.get_page(page_number)
 
-    context = {'products': products} | get_all_filter_values(category) | {'selected_category': category} | {'user': request.user}
-    print(request.user.is_authenticated)
+    try:
+        filter_url_params = f'&category={selected_category}&type={selected_p_types[0]}&manufacturer={selected_manufacturers[0]}&taste={selected_tastes[0]}'
+    except IndexError:
+        filter_url_params = f'&category={selected_category}'
+    print(filter_url_params)
+
+    context = {'products': page_obj} | get_all_filter_values(selected_category) | {'user': request.user} | {'filter_url_params': filter_url_params}
     return render(request, "shop.html", context)
 
 

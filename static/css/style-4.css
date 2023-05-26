@@ -160,7 +160,7 @@ body{
     margin: 2% 0 2% 0;
 }
 
-.top_section > button{
+.top_section > a{
     background: #C00C6E;
     box-shadow: 0px 0px 40px 20px rgba(94, 58, 212, 0.5);
     border: 0px;
@@ -176,6 +176,7 @@ body{
     color: #FFFFFF;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-align: center;
+    text-decoration: none;
 }
 
 h1{
@@ -519,7 +520,7 @@ footer .tabs{
 
 }
 
-footer .tabs h5{
+footer .tabs a{
     font-family: 'Work Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -614,6 +615,6 @@ footer > .socials > .logos > .twitter, .insta{
 
 }
 
-footer > .socials > .logos > button > iconify-icon{
+footer > .socials > .logos > a > iconify-icon{
     font-size: 2vh;
 }

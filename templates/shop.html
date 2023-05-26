@@ -37,14 +37,17 @@
                 </div>
                 <div>
                     <div class="vh"></div>
-{#                    <button id="profile-button">Профіль</button>#}
                     {% if user.is_authenticated %}
                         <a id="profile-button" href="profile.html">Профіль</a>
                     {% else %}
                         <a id="no-auth" href="login-dialog.html">Увійти</a>
                     {% endif %}
                     <div class="vh"></div>
-                    <a class="cart-ico" href="cart.html"><iconify-icon icon="material-symbols:shopping-cart"></iconify-icon></a>
+                    {% if user.is_authenticated %}
+                        <a class="cart-ico" href="cart.html"><iconify-icon icon="material-symbols:shopping-cart"></iconify-icon></a>
+                    {% else %}
+                        <a class="cart-ico" href="login-dialog.html"><iconify-icon icon="material-symbols:shopping-cart"></iconify-icon></a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -86,20 +89,20 @@
             <div class="side-menu">
                 <h3>Тип</h3>
                 <form method="get" class="p_type-filter">
-                    {% for t in p_types %}
+                    {% for t in all_p_types %}
                         <label>{{ t }}<input type="checkbox" name="type" value="{{ t }}"></label>
                     {% endfor %}
                 </form>
                 <h3>Виробник</h3>
                 <form method="get" class="manufacturer-filter">
-                    {% for m in manufacturers %}
+                    {% for m in all_manufacturers %}
                         <label>{{ m }}<input type="checkbox" name="manufacturer" value="{{ m }}"></label>
                     {% endfor %}
                 </form>
                 <h3>Смак</h3>
                 <form method="get" class="taste-filter">
-                    {% for t in tastes %}
-                        <label>{{ tastes|get_item:t }}<input type="checkbox" name="taste" value="{{ t }}"></label>
+                    {% for t in all_tastes %}
+                        <label>{{ t }}<input type="checkbox" name="taste" value="{{ t }}"></label>
                     {% endfor %}
                 </form>
                 <button id="apply-filters">Застосувати фільтри</button>
@@ -162,18 +165,19 @@
                     });
                 </script>
             </div>
+            <div class="goods-main">
 
-            <div class="goods">
+                <div class="goods">
                 {% for p in products %}
                 <form action="{% url 'add_to_cart' p.id %}?selected_taste=Без смаку" method="post" class="product-form">
                     {% csrf_token %}
-                    <img src="{{ p.picture }}">
+                    <img src="mediaStorage/{{ p.picture }}">
                     <div class="card-info">
                         <h3>{{ p.name}}</h3>
                         <p>{{ p.weight }} г</p>
                         <select class="taste-selector" name="tastes" onchange="updateFormAction(this.form)">
-                            {% for taste in p.tastes %}
-                                <option value="{{ p.tastes|get_item:taste }}">{{ p.tastes|get_item:taste }}</option>
+                            {% for taste in p.tastes|splt:"," %}
+                                <option value="{{ taste }}">{{ taste }}</option>
                             {% endfor %}
                         </select>
                         <div class="pricecart">
@@ -190,15 +194,18 @@
                         console.log(selectedTaste)
                         var actionUrl = form.getAttribute('action');
                         console.log(actionUrl)
-                        var newActionUrl = actionUrl + '?selected_taste=' + encodeURIComponent(selectedTaste);
+                        var newActionUrl = actionUrl.split('?')[0] + '?selected_taste=' + encodeURIComponent(selectedTaste);
                         form.setAttribute('action', newActionUrl);
                     }
                 </script>
+            </div>
 
                 <div class="page-number">
                     {% if products.has_other_pages %}
                         {% if products.has_previous %}
-                          <button><a href="{{ params }}page={{ products.previous_page_number }}">&laquo;</a></button>
+                          <button>
+                              <a href=?page={{ page_obj.previous_page_number }}{{ filter_url_params }}">&laquo;</a>
+                          </button>
                         {% else %}
                           <button class="disabled"><span>&laquo;</span></button>
                         {% endif %}
@@ -207,12 +214,12 @@
                           {% if products.number == i %}
                             <button class="active"><span>{{ i }} <span class="sr-only"></span></span></button>
                           {% else %}
-                            <button><a href="{{ params }}page={{ i }}">{{ i }}</a></button>
+                            <button><a href="?page={{ i }}{{ filter_url_params }}">{{ i }}</a></button>
                           {% endif %}
                         {% endfor %}
 
                         {% if products.has_next %}
-                          <button><a href="{{ params }}page={{ products.next_page_number }}">&raquo;</a></button>
+                          <button><a href="?page={{ page_obj.next_page_number }}{{ filter_url_params }}">&raquo;</a></button>
                         {% else %}
                           <button class="disabled"><span>&raquo;</span></button>
                         {% endif %}
@@ -228,12 +235,18 @@
             </div>
 
             <div class="tabs">
-                <h5>Головна</h5>
-                <h5>Тарифи</h5>
-                <h5>Харчування</h5>
-                <h5>Профіль</h5>
-                <h5>Клуби</h5>
-                <h5>Кошик</h5>
+                <a href="index.html">Головна</a>
+                <a href="prices.html">Тарифи</a>
+                <a href="shop.html">Харчування</a>
+                {% if user.is_authenticated %}
+                    <a href="profile.html">Профіль</a>
+                {% else %}
+                    <a href="login-dialog.html">Вхід</a>
+                {% endif %}
+                <a href="clubs.html">Клуби</a>
+                {% if user.is_authenticated %}
+                    <a href="cart.html">Кошик</a>
+                {% endif %}
             </div>
 
             <div class="contacts">
@@ -251,18 +264,18 @@
             <div class="socials">
                 <h4>Соцмережі</h4>
                 <div class="logos">
-                    <button class="facebook">
+                    <a href="https://www.facebook.com/" class="facebook">
                         <iconify-icon icon="ri:facebook-fill" style="color: white;"></iconify-icon>                  
-                    </button>
-                    <button class="telegram">
+                    </a>
+                    <a href="https://t.me/zk215" class="telegram">
                         <iconify-icon icon="mingcute:telegram-fill" style="color: white;"></iconify-icon>       
-                    </button>
-                    <button class="twitter">
+                    </a>
+                    <a href="https://twitter.com/" class="twitter">
                         <iconify-icon icon="ri:twitter-fill" style="color: #5e3ad4;"></iconify-icon>                 
-                    </button>
-                    <button class="insta">
+                    </a>
+                    <a href="https://www.instagram.com/" class="insta">
                         <iconify-icon icon="ri:instagram-fill" style="color: #5e3ad4;"></iconify-icon>                  
-                    </button>
+                    </a>
                 </div>
             </div>
         </footer>

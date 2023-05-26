@@ -6,27 +6,13 @@ from .accounts.models import GymUser
 
 class Products(models.Model):
     category = models.CharField(max_length=30, null=True)
-    picture = models.ImageField(upload_to="static/dbimages")
+    picture = models.ImageField(upload_to="productImages")
     name = models.CharField(max_length=100)
     weight = models.IntegerField()
-    # tastes = models.CharField(validators=[validators.validate_comma_separated_integer_list], max_length=100)
-    tastes = models.JSONField("tastes", default="Без смаку")
+    tastes = models.CharField(max_length=1000, default="Без смаку,Ванільне морозиво,Банан,Полуничний мілкшейк,Шоколад,Кокос")
     price = models.FloatField()
     manufacturer = models.CharField(max_length=50)
     p_type = models.CharField(max_length=50)
-
-
-# class Translations(models.Model):
-#     urlName = models.CharField(max_length=100)
-#     uaName = models.CharField(max_length=100)
-#
-# class Clubs(models.Model):
-#     address = models.CharField(max_length=100)
-#
-# class Plans(models.Model):
-#     name = models.CharField(max_length=25)
-#     price = models.IntegerField()
-#     permissions = models.JSONField()
 
 
 class Cart(models.Model):
@@ -46,7 +32,7 @@ class GymTrainer(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=15)
-    photo = models.ImageField(upload_to='trainers')
+    photo = models.ImageField(upload_to='trainers', default=None)
 
     def __str__(self):
         return f"{self.last_name} {self.first_name}"
