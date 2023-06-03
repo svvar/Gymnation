@@ -103,10 +103,7 @@ def shop(request):
     except NameError:
         pass
 
-    print(filter_query)
-    print(Products.objects.filter(name="Biotech Beef Protein")[0].tastes)
 
-    # Get the products that match the filter query
     products = Products.objects.filter(filter_query)
 
     pages = Paginator(products, 8)
@@ -116,7 +113,6 @@ def shop(request):
         filter_url_params = f'&category={selected_category}&type={selected_p_types[0]}&manufacturer={selected_manufacturers[0]}&taste={selected_tastes[0]}'
     except IndexError:
         filter_url_params = f'&category={selected_category}'
-    print(filter_url_params)
 
     context = {'products': page_obj} | get_all_filter_values(selected_category) | {'user': request.user} | {'filter_url_params': filter_url_params}
     return render(request, "shop.html", context)
@@ -131,7 +127,6 @@ def profile(request):
 
 
     context = {'user': request.user}
-    print(context)
     return render(request, 'profile.html', context)
 
 def login_page(request):
@@ -173,7 +168,6 @@ def login_page(request):
 @login_required
 def cart(request):
     cart_items = Cart.objects.filter(user=request.user)
-    print(cart_items)
     cart_total_value = 0
     for item in cart_items:
         item.product = Products.objects.get(id=item.product_id)
@@ -185,8 +179,6 @@ def cart(request):
 @login_required
 def add_to_cart(request, product_id):
     selected_taste = request.GET.get("selected_taste")
-    print(selected_taste)
-
 
     product = Products.objects.get(id=product_id)
     cart_item = Cart(user=request.user, product=product, taste=selected_taste, price=product.price, quantity=1)
@@ -206,7 +198,6 @@ def remove_from_cart(request, cart_id):
 
 @login_required
 def change_quantity(request, action, cart_id):
-    print(action)
 
     cart_item = Cart.objects.get(id=cart_id)
     if action == "plus":
